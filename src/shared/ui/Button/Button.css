@@ -1,0 +1,47 @@
+.button {
+    font-size: 24px;
+    font-weight: 700;
+    min-width: 325px;
+    height: 60px;
+    padding: 0 12px;
+    color: var(--primary-color);
+    background: var(--orange-color);
+    border-radius: 5px;
+    display: grid;
+    place-items: center;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.button--regular {
+    font-weight: 400;
+}
+
+.button--ghost {
+    background-color: transparent;
+    border: 1px solid var(--secondary-color);
+}
+
+.button--white-color {
+    color: var(--secondary-color);
+}
+
+.button--sm {
+    min-width: 228px;
+    height: 39px;
+}
+
+.button--md {
+    min-width: 169px;
+}
+
+.button--lg {
+    min-width: 222px;
+}
+
+.button--xl {
+    min-width: 303px;
+    height: 52px;
+}
+
+

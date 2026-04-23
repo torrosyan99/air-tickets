@@ -1,0 +1,25 @@
+.location-input {
+    width: 100%;
+    position: relative;
+}
+
+
+
+.location-input__list {
+    position: absolute;
+    background-color: #fff;
+    bottom: 3px;
+    left: 0;
+    right: 0;
+    transform: translateY(100%);
+}
+
+.location-input__item {
+    width: 100%;
+}
+
+.location-input__list-button {
+    padding: 10px 21px;
+    color: var(--primary-color);
+    text-transform: capitalize;
+}

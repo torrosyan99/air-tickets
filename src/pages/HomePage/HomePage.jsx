@@ -1,7 +1,15 @@
+import {HomePageTop} from "@/widgets/HomePageTop/HomePageTop.jsx";
+import {About} from "@/widgets/About/About.jsx";
+import {HowItWork} from "@/widgets/HowItWork/HowItWork.jsx";
+import {Reviews} from "@/widgets/Reviews/Reviews.jsx";
+
 export const HomePage = () => {
   return (
     <>
-Homepage
+      <HomePageTop/>
+      <About />
+      <HowItWork />
+      <Reviews />
     </>
   );
 };

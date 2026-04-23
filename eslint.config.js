@@ -28,6 +28,7 @@ export default defineConfig([
     },
     rules: {
       'quotes': ['error', 'single'],
+      'object-curly-spacing': ['error', 'always'],
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
       'import/order': [
         'error',
@@ -48,6 +49,9 @@ export default defineConfig([
               group:'internal',
             },{
               pattern: '@/widgets/**',
+              group:'internal',
+            },{
+              pattern: '@icons/**',
               group:'internal',
             }
           ],
