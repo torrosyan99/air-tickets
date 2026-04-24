@@ -34,9 +34,7 @@
     border-radius: 5px;
 }
 
-.react-datepicker__day
-:not(.react-datepicker__day--disabled)
-:not(.react-datepicker__day--outside-month):hover {
+.react-datepicker__day:not(.react-datepicker__day--disabled):hover {
     background-color: rgba(255, 168, 0, 0.31);
     border: 2px solid #FFA800;
 }
@@ -69,13 +67,11 @@
 .react-datepicker__triangle {
     width: 0;
     height: 0;
-
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-top: 12px solid #fff; /* цвет треугольника */
 }
 
-.react-datepicker__day--outside-month,
 .react-datepicker__day--disabled {
     color: #E7E7E7;
 }
@@ -117,4 +113,5 @@
 
 .react-datepicker__tab-loop {
     position: absolute;
+    z-index:20;
 }
