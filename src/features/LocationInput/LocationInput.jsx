@@ -2,7 +2,7 @@ import {useState} from 'react';
 
 import {LocationList} from './LocationList.jsx';
 
-import {useCitiesSearch} from '@/features/LocationInput/useCitiesSearch.jsx';
+import {useCitiesSearch} from '@/shared/hooks/useCItiesSearch/useCitiesSearch.jsx';
 import {Input} from '@/shared/ui/Input/Input.jsx';
 import LocationSvg from "@icons/location-2.svg?react"
 
