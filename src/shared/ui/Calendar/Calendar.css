@@ -16,8 +16,8 @@
 .react-datepicker__week {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 16px;
-    font-size: 24px;
+    gap: 14px;
+    font-size: 18px;
 }
 
 .react-datepicker__day-names,

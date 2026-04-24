@@ -35,20 +35,20 @@ export const useRoutesSearch = (data) => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    console.log(data);
 
     error('from')
     error('to')
 
     if (!data.to.name || !data.from.name) return
 
-    let dataStr = 'from_city_id=${data.from.id}&to_city_id=${data.to.id}';
+    let dataStr = `from_city_id=${data.from.id}&to_city_id=${data.to.id}`;
     if (data.startDate) {
       dataStr += `&date_start=${formatDate(data.startDate)}`;
     }
     if (data.endDate) {
       dataStr += `&date_end=${formatDate(data.endDate)}`;
     }
+
 
     navigation({
       pathname: PagePaths.TICKETS,

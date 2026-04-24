@@ -1,5 +1,5 @@
-import { HomePage } from '@/pages/HomePage/HomePage.jsx';
-import { TicketsPage } from '@/pages/TicketsPage/TicketsPage.jsx';
+import {HomePage} from '@/pages/HomePage/HomePage.jsx';
+import {TicketsPage} from '@/pages/TicketsPage/TicketsPage.jsx';
 
 export const PagePaths = {
   HOMEPAGE: '/',
@@ -7,12 +7,18 @@ export const PagePaths = {
 }
 
 
-export const routerConfig = [
-  {
-    path: PagePaths.HOMEPAGE,
-    component: HomePage,
-  },{
-  path: PagePaths.TICKETS,
-    component: TicketsPage,
-  }
-]
+export const routerConfig = {
+  main: [
+    {
+      path: PagePaths.HOMEPAGE,
+      component: HomePage,
+    }
+  ],
+  booking: [
+    {
+      path: PagePaths.TICKETS,
+      component:
+      TicketsPage,
+    }
+  ]
+}
