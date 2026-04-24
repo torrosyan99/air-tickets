@@ -1,4 +1,3 @@
-import {PagePaths} from '@/shared/configs/routerConfig/routerConfig.jsx';
 import {API} from "@/shared/api/index.js";
 import {useState} from "react";
 import {formatDate} from "@/shared/utils/formateDate/formateDate.js";
