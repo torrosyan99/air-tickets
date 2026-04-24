@@ -8,6 +8,7 @@ import './style/main.css'
 import { Header } from '@/widgets/Header/Header.jsx';
 import { Footer } from '@/widgets/Footer/Footer.jsx';
 
+
 export const App = () => {
   return (
     <div className="app">

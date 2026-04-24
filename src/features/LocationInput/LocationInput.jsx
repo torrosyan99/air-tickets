@@ -10,22 +10,22 @@ import './LocationInput.css'
 
 export const LocationInput = ({placeholder, value, error, setValue}) => {
   const [focused, setFocused] = useState(false);
-  const {items} = useCitiesSearch(value);
+  const {data:items = []} = useCitiesSearch(value);
 
   const onFocus = () => setFocused(true);
-  const onBlur = () => setFocused(false);
+  const onBlur = () =>    setFocused(false)
+
   const onChange = (e) => {
     if(items.length === 1 && items[0].name === e.target.value.toLowerCase()){
       setValue({
         name: e.target.value,
         id: items[0]._id
       })
-
       return
     }
     setValue({
       name: e.target.value,
-      id: e.target.value.length > 0 && 'none'
+      id:  null
     })
   }
 

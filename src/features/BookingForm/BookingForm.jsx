@@ -4,12 +4,12 @@ import { useState } from 'react';
 import { BookingDate } from '@/features/BookingForm/BookingDate.jsx';
 import { BookingRoutes } from '@/features/BookingForm/BookingRoutes.jsx';
 import { Button } from '@/shared/ui/Button/Button.jsx';
-import {useRoutesSearch} from "../../shared/hooks/useRoutesSearch/useRoutesSearch.jsx";
+import {useRoutesSearch} from "@/shared/hooks/useRoutesSearch/useRoutesSearch.jsx";
 
 export const BookingForm = () => {
   const [data, setData] = useState({
-    from: { name: '', id: '' },
-    to: { name: '', id: '' },
+    from: { name: '', id: null},
+    to: { name: '', id: null },
     startDate: null,
     endDate: null,
   });

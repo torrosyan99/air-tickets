@@ -1,6 +1,8 @@
-import {API} from "@/shared/api/index.js";
 import {useState} from "react";
 import {formatDate} from "@/shared/utils/formateDate/formateDate.js";
+import {encodeBase64} from "@/shared/utils/base64/index.js";
+import {useNavigate} from "react-router-dom";
+import {PagePaths} from "@/shared/configs/routerConfig/routerConfig.jsx";
 
 export const useRoutesSearch = (data) => {
   const [errors, setErrors] = useState({
@@ -8,7 +10,9 @@ export const useRoutesSearch = (data) => {
     to: ''
   });
 
-  const emptyError = (key) => {
+  const navigation = useNavigate();
+
+  const error = (key) => {
     if (!data[key].name) {
       setErrors(e => ({
         ...e,
@@ -16,13 +20,12 @@ export const useRoutesSearch = (data) => {
       }))
 
       return
-    }
-    else if (data[key].name && errors[key]) setErrors(e => ({
+    } else if (data[key].name && errors[key]) setErrors(e => ({
       ...e,
       [key]: ''
     }));
 
-    if(data[key].id === 'none') {
+    if (!data[key].id) {
       setErrors(e => ({
         ...e,
         [key]: 'Некоректное местоположение',
@@ -32,22 +35,24 @@ export const useRoutesSearch = (data) => {
 
   const onSubmit = (e) => {
     e.preventDefault()
+    console.log(data);
 
-    emptyError('from')
-    emptyError('to')
+    error('from')
+    error('to')
 
     if (!data.to.name || !data.from.name) return
 
-    let api = API.ROUTES + `?from_city_id=${data.from.id}&to_city_id=${data.to.id}`;
-    if(data.startDate) {
-      api += `&date_start=${formatDate(data.startDate)}`;
+    let dataStr = 'from_city_id=${data.from.id}&to_city_id=${data.to.id}';
+    if (data.startDate) {
+      dataStr += `&date_start=${formatDate(data.startDate)}`;
     }
-    if(data.endDate) {
-      api += `&date_end=${formatDate(data.endDate)}`;
+    if (data.endDate) {
+      dataStr += `&date_end=${formatDate(data.endDate)}`;
     }
-    console.log(api)
-    fetch(api).then(res => res.json()).then((data) => {
-      console.log(data)
+
+    navigation({
+      pathname: PagePaths.TICKETS,
+      search: `s=${encodeBase64(dataStr)}`
     })
 
   }
