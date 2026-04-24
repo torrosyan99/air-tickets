@@ -5,6 +5,10 @@
     --orange-color:#FFA800;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;

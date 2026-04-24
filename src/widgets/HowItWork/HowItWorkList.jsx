@@ -1,6 +1,6 @@
-import DesktopSvg from "@icons/desktop.svg?react";
-import OfficeSvg from "@icons/office.svg?react";
-import RoutesSvg from "@icons/routes.svg?react";
+import DesktopSvg from '@icons/desktop.svg?react';
+import OfficeSvg from '@icons/office.svg?react';
+import RoutesSvg from '@icons/routes.svg?react';
 
 export const HowItWorkList = () => {
   return (<ul className={'how-it-work__list'}>

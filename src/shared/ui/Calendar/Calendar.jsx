@@ -1,10 +1,11 @@
-import DatePicker from "react-datepicker";
-import { forwardRef } from "react";
-import CalendarNextSvg from "@icons/calendar-next.svg?react";
-import CalendarPrevSvg from "@icons/calendar-prev.svg?react";
-import "./Calendar.css";
+import CalendarNextSvg from '@icons/calendar-next.svg?react';
+import CalendarPrevSvg from '@icons/calendar-prev.svg?react';
+import {forwardRef} from 'react';
+import DatePicker from 'react-datepicker';
+import CalendarSvg from "@icons/calendar.svg?react"
+import './Calendar.css';
 
-const CustomButton = forwardRef(({ value, onClick }, ref) => (
+const CustomButton = forwardRef(({value, onClick}, ref) => (
   <div className="calendar__wrapper">
     <input
       ref={ref}
@@ -15,16 +16,19 @@ const CustomButton = forwardRef(({ value, onClick }, ref) => (
       placeholder="ДД/ММ/ГГ"
       className="calendar__input"
     />
+    <CalendarSvg className="calendar__icon"/>
   </div>
 ));
 
-export const Calendar = ({ date, minDate, setDate }) => {
+export const Calendar = ({date, minDate, maxDate, setDate}) => {
   return (
     <DatePicker
-       selected={date}
+      selected={date}
       onChange={setDate}
       minDate={minDate || new Date()}
-      customInput={<CustomButton />}
+      maxDate={maxDate}
+      customInput={<CustomButton/>}
+      dateFormat="dd/MM/yyyy"
       renderCustomHeader={({
                              date,
                              decreaseMonth,
@@ -33,16 +37,16 @@ export const Calendar = ({ date, minDate, setDate }) => {
                              nextMonthButtonDisabled,
                            }) => (
         <div className="calendar__top">
-          <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
-            <CalendarPrevSvg />
+          <button onClick={decreaseMonth} type={'button'} disabled={prevMonthButtonDisabled}>
+            <CalendarPrevSvg/>
           </button>
 
           <div className="calendar__month">
-            {date.toLocaleString("default", { month: "long" })}
+            {date.toLocaleString('default', {month: 'long'})}
           </div>
 
-          <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
-            <CalendarNextSvg />
+          <button onClick={increaseMonth} type={'button'} disabled={nextMonthButtonDisabled}>
+            <CalendarNextSvg/>
           </button>
         </div>
       )}

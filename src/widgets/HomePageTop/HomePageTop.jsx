@@ -1,6 +1,6 @@
 import './HomePageTop.css'
-import {Container} from "@/shared/ui/Container/Container.jsx";
-import {BookingForm} from "@/features/BookingForm/BookingForm.jsx";
+import { BookingForm } from '@/features/BookingForm/BookingForm.jsx';
+import { Container } from '@/shared/ui/Container/Container.jsx';
 
 export const HomePageTop = () => {
   return (

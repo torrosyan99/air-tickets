@@ -1,6 +1,7 @@
-import {Logo} from "@/shared/ui/Logo/Logo.jsx";
-import UpSvg from "@icons/up.svg?react"
-import {Container} from "@/shared/ui/Container/Container.jsx";
+import UpSvg from '@icons/up.svg?react'
+
+import { Container } from '@/shared/ui/Container/Container.jsx';
+import { Logo } from '@/shared/ui/Logo/Logo.jsx';
 
 export const Bottom = () => {
   return (

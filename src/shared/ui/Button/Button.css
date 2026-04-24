@@ -11,8 +11,31 @@
     place-items: center;
     width: fit-content;
     cursor: pointer;
+    transition: .2s box-shadow ease-in-out, .2s background-color ease-in-out, .2s color ease-in-out;
 }
 
+.button:hover {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.button:active {
+    border: 1px solid #FFA800;
+    background-color: transparent;
+    color: #FFA800;
+}
+
+.button--ghost:hover {
+    box-shadow: none;
+    background-color: #FFCA62;
+    border: 1px solid transparent;
+    color: #2D2B2F;
+}
+
+.button--ghost:active {
+    background-color:#fff;
+    border: 1px solid transparent;
+    color: #2D2B2F;
+}
 .button--regular {
     font-weight: 400;
 }

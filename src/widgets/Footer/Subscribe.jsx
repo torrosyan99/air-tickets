@@ -1,5 +1,5 @@
-import {Input} from "@/shared/ui/Input/Input.jsx";
-import {Button} from "@/shared/ui/Button/Button.jsx";
+import { Button } from '@/shared/ui/Button/Button.jsx';
+import { Input } from '@/shared/ui/Input/Input.jsx';
 
 export const Subscribe = () => {
   return (

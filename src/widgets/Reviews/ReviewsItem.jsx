@@ -1,5 +1,5 @@
 
-export const ReviewsItem = ({src, alt,name, children}) => {
+export const ReviewsItem = ({ src, alt,name, children }) => {
   return (
       <div className={'reviews__slider-item'}>
         <img className={'reviews__img'} src={src} alt={alt} />

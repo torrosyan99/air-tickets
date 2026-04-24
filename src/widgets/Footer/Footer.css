@@ -70,10 +70,18 @@
     align-items: center;
 }
 
-.footer__bottom  {
+.footer__socials-link {
+    --social-icon: var(--gray-color);
+}
+
+.footer__socials-link:hover {
+    --social-icon: #FFCA62;
+}
+
+.footer__bottom {
     margin-top: 52px;
-    padding-top:  22px;
-    border-top:  1px solid var(--gray-color);
+    padding-top: 22px;
+    border-top: 1px solid var(--gray-color);
 }
 
 .footer__bottom-inner {

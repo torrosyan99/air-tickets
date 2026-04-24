@@ -5,8 +5,8 @@ import './style/reset.css'
 import 'swiper/css';
 import 'swiper/css/pagination';
 import './style/main.css'
-import {Header} from "@/widgets/Header/Header.jsx";
-import {Footer} from "@/widgets/Footer/Footer.jsx";
+import { Header } from '@/widgets/Header/Header.jsx';
+import { Footer } from '@/widgets/Footer/Footer.jsx';
 
 export const App = () => {
   return (

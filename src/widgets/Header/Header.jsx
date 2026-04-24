@@ -1,10 +1,13 @@
-import {Container} from "@/shared/ui/Container/Container.jsx";
-import {Logo} from "@/shared/ui/Logo/Logo.jsx";
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom';
+
+import { Container } from '@/shared/ui/Container/Container.jsx';
+import { Logo } from '@/shared/ui/Logo/Logo.jsx';
+import {useScrollToHash} from './useScrollToHash.jsx'
 
 import './Header.css'
 
 export const Header = () => {
+  useScrollToHash()
   return (
     <header className="header">
       <Container>
@@ -12,16 +15,16 @@ export const Header = () => {
       </Container>
       <nav className={'header__nav'}>
         <Container className="header__nav-inner">
-          <Link className='header__link' to={'#about'}>
+          <Link className='header__link' to={'/#about'}>
             О нас
           </Link>
-          <Link className='header__link' to={"#about"}>
+          <Link className='header__link' to={'/#how-it-work'}>
             Как это работает
         </Link>
-          <Link className='header__link' to={'#reviews'}>
+          <Link className='header__link' to={'/#reviews'}>
             Отзывы
         </Link>
-          <Link className='header__link' to={'#contacts'}>
+          <Link className='header__link' to={'/#footer'}>
             Контакты
         </Link>
         </Container>

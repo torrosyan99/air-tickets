@@ -1,5 +1,5 @@
 import { HomePage } from '@/pages/HomePage/HomePage.jsx';
-import {TicketsPage} from "@/pages/TicketsPage/TicketsPage.jsx";
+import { TicketsPage } from '@/pages/TicketsPage/TicketsPage.jsx';
 
 export const PagePaths = {
   HOMEPAGE: '/',

@@ -1,17 +1,18 @@
-import {Container} from "@/shared/ui/Container/Container.jsx"
+import { Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-import {Title} from "@/shared/ui/Title/Title.jsx";
-import {Swiper, SwiperSlide} from "swiper/react";
-import {Pagination} from "swiper/modules";
-import firstImg from "@/shared/assets/images/reviews-img-1.png";
-import secondImg from "@/shared/assets/images/reviews-img-2.png";
+import firstImg from '@/shared/assets/images/reviews-img-1.png';
+import secondImg from '@/shared/assets/images/reviews-img-2.png';
+import { Container } from '@/shared/ui/Container/Container.jsx'
+import { Title } from '@/shared/ui/Title/Title.jsx';
+
 
 import './Reviews.css'
-import {ReviewsItem} from "./ReviewsItem.jsx";
+import { ReviewsItem } from './ReviewsItem.jsx';
 
 export const Reviews = () => {
   return (
-    <section className="reviews">
+    <section className="reviews" id={'reviews'}>
       <Container>
         <Title>отзывы</Title>
 
@@ -20,7 +21,7 @@ export const Reviews = () => {
           slidesPerView={2}
           modules={[Pagination]}
           spaceBetween={85}
-          pagination={{clickable: true}}
+          pagination={{ clickable: true }}
 
         >
           <SwiperSlide>

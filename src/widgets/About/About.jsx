@@ -1,10 +1,10 @@
 import './About.css'
-import {Container} from "@/shared/ui/Container/Container.jsx";
-import {Title} from "@/shared/ui/Title/Title.jsx";
+import { Container } from '@/shared/ui/Container/Container.jsx';
+import { Title } from '@/shared/ui/Title/Title.jsx';
 
 export const About = () => {
   return (
-    <section className='about'>
+    <section className='about' id={'about'}>
       <Container>
           <Title>
             о нас

@@ -1,48 +1,55 @@
+import {useState} from 'react';
+
+import {LocationList} from './LocationList.jsx';
+
+import {useCitiesSearch} from '@/features/LocationInput/useCitiesSearch.jsx';
 import {Input} from '@/shared/ui/Input/Input.jsx';
+import LocationSvg from "@icons/location-2.svg?react"
 
 import './LocationInput.css'
-import {useEffect, useState} from "react";
 
-function capitalizeFirstLetter(str) {
-  if (!str) return str; // защита от пустой строки
-  return str[0].toUpperCase() + str.slice(1);
-}
-export const LocationInput = ({placeholder, value, setValue}) => {
-  const [items, setItems] = useState([]);
+export const LocationInput = ({placeholder, value, error, setValue}) => {
   const [focused, setFocused] = useState(false);
-  useEffect(() => {
-    if(value.length > 0){
-      console.log('value',value)
-      fetch(`https://students.netoservices.ru/fe-diplom/routes/cities?name=${value}`)
-        .then(res => res.json())
-        .then(setItems)
+  const {items} = useCitiesSearch(value);
+
+  const onFocus = () => setFocused(true);
+  const onBlur = () => setFocused(false);
+  const onChange = (e) => {
+    if(items.length === 1 && items[0].name === e.target.value.toLowerCase()){
+      setValue({
+        name: e.target.value,
+        id: items[0]._id
+      })
+
+      return
     }
-  }, [value]);
+    setValue({
+      name: e.target.value,
+      id: e.target.value.length > 0 && 'none'
+    })
+  }
+
+
+
 
   return (
-    <div className="location-input">
-      <Input
-        className="location-input__main"
-        value={value}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
-        onChange={(e) => setValue({
-          name: e.target.value,
-          id: ''
-        })}
-        placeholder={placeholder}  />
-      {items.length > 0  && focused &&
-        <ul className={'location-input__list'}>
-        {items.map(item => (<li className={'location-input__item'} key={item._id}>
-          <button className={'location-input__list-button'} type={'button'}
-          onMouseDown={() => setValue({
-            name:item.name,
-            id:item._id
-          })}
-          >{item.name}</button>
-        </li>))}
-      </ul>}
-
-    </div>
+    <Input
+      inputClass="location-input"
+      value={value}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      onChange={onChange}
+      error={error}
+      placeholder={placeholder}>
+      <LocationSvg className="location-input__icon"/>
+      {items.length > 0 && value.length > 0 && <div className={'location-input__clue'}>
+        <span className={'location-input__clue-hidden'}>
+          {value}
+        </span>
+        {items[0].name.slice(value.length)}
+      </div>}
+      {items.length > 0 && items[0].name !== value.toLowerCase()  &&
+        <LocationList items={items} focused={focused} setValue={setValue}/>}
+    </Input>
   );
 };

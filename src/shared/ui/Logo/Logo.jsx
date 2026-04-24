@@ -1,5 +1,6 @@
-import {Link} from "react-router-dom";
-import {PagePaths} from "@/shared/configs/routerConfig/routerConfig.jsx";
+import { Link } from 'react-router-dom';
+
+import { PagePaths } from '@/shared/configs/routerConfig/routerConfig.jsx';
 import './Logo.css'
 
 export const Logo = () => {
