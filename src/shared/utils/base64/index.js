@@ -1,6 +1,6 @@
-export const encodeBase64 = (str) => {
-  return btoa(new TextEncoder().encode(str)
-    .reduce((data, byte) => data + String.fromCharCode(byte), ''));
+
+export const encodeBase64 = (data) => {
+  return new URLSearchParams(data)
 };
 
 export const decodeBase64 = (str) => {

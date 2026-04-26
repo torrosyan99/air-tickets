@@ -3,9 +3,11 @@ import CalendarPrevSvg from '@icons/calendar-prev.svg?react';
 import {forwardRef} from 'react';
 import DatePicker from 'react-datepicker';
 import CalendarSvg from "@icons/calendar.svg?react"
+import {cn} from "@/shared/utils/cn/cn.js";
+
 import './Calendar.css';
 
-const CustomButton = forwardRef(({value, onClick}, ref) => (
+const CustomButton = forwardRef(({value, onClick, small}, ref) => (
   <div className="calendar__wrapper">
     <input
       ref={ref}
@@ -14,20 +16,22 @@ const CustomButton = forwardRef(({value, onClick}, ref) => (
       onClick={onClick}
       readOnly
       placeholder="ДД/ММ/ГГ"
-      className="calendar__input"
+      className={cn("calendar__input", [], {
+        ['calendar__input--small']: small,
+      })}
     />
-    <CalendarSvg className="calendar__icon"/>
+    <CalendarSvg className="calendar__icon" />
   </div>
 ));
 
-export const Calendar = ({date, minDate, maxDate, setDate}) => {
+export const Calendar = ({date, minDate, maxDate, setDate, small}) => {
   return (
     <DatePicker
       selected={date}
       onChange={setDate}
       minDate={minDate || new Date()}
       maxDate={maxDate}
-      customInput={<CustomButton/>}
+      customInput={<CustomButton small={small}/>}
       dateFormat="dd/MM/yyyy"
       renderCustomHeader={({
                              date,

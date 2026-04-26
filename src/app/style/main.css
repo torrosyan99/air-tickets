@@ -2,7 +2,18 @@
     --primary-color: #292929;
     --secondary-color: #fff;
     --gray-color: #E5E5E5;
+    --gray-color-2: #928F94;
     --orange-color:#FFA800;
+
+
+    --white-bg: #fff;
+    --orange-bg: #FFA800;
+    --dark-bg: #3E3C41;
+
+    --orange-border-color: #FFA800;
+    --whtie-border-color:#fff;
+    --gray-border-color: #E5E5E5;
+
 }
 
 html {
@@ -13,6 +24,7 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     color: var(--primary-color);
+    font-size: 18px ;
 }
 
 .app {

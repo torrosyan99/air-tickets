@@ -1,9 +1,8 @@
 .booking {
     padding: 79px 24.25px 52px 21px;
-    background: #fff;
+    background: var(--secondary-color);
     width: 100%;
     background: rgba(41, 41, 41, 0.8);
-    font-size: 18px;
 }
 
 .booking--horizontal {

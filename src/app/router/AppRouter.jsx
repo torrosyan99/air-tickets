@@ -2,7 +2,7 @@ import {Route, Routes} from 'react-router-dom';
 
 import {routerConfig} from '@/shared/configs/routerConfig/routerConfig.jsx';
 import {BookingTop} from "@/widgets/BookingTop/BookingTop.jsx";
-import {BookingLayout} from "@/widgets/Layouts/BookingLayout.jsx";
+import {BookingLayout} from "@/pages/Layouts/BookingLayout.jsx";
 
 export const AppRouter = () => {
   return (

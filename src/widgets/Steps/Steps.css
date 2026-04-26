@@ -1,5 +1,6 @@
 .steps {
     position: relative;
+    margin-bottom: 95px;
 }
 
 .steps::before {
@@ -9,7 +10,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    background-color: var(--orange-color);
+    background-color: var(--orange-bg);
     z-index: -1;
 }
 

@@ -19,9 +19,9 @@
 }
 
 .button:active {
-    border: 1px solid #FFA800;
+    border: 1px solid var(--orange-color);
     background-color: transparent;
-    color: #FFA800;
+    color: var(--orange-color);
 }
 
 .button--ghost:hover {
@@ -32,7 +32,7 @@
 }
 
 .button--ghost:active {
-    background-color:#fff;
+    background-color:var(--white-bg);
     border: 1px solid transparent;
     color: #2D2B2F;
 }

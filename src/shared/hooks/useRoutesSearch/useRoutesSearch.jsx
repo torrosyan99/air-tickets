@@ -10,7 +10,7 @@ export const useRoutesSearch = (data) => {
     to: ''
   });
 
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   const error = (key) => {
     if (!data[key].name) {
@@ -41,18 +41,23 @@ export const useRoutesSearch = (data) => {
 
     if (!data.to.name || !data.from.name) return
 
-    let dataStr = `from_city_id=${data.from.id}&to_city_id=${data.to.id}`;
+    // let dataStr = `from_city_id=${data.from.id}&to_city_id=${data.to.id}`;
+
+    const result  = {
+      from_city_id: data.from.id,
+      to_city_id: data.to.id,
+    }
+
     if (data.startDate) {
-      dataStr += `&date_start=${formatDate(data.startDate)}`;
+      result.date_start = formatDate(data.startDate);
     }
     if (data.endDate) {
-      dataStr += `&date_end=${formatDate(data.endDate)}`;
+      result.date_end = formatDate(data.startDate);
     }
 
-
-    navigation({
+    navigate({
       pathname: PagePaths.TICKETS,
-      search: `s=${encodeBase64(dataStr)}`
+      search: `s=${encodeBase64(result).toString()}`,
     })
 
   }
