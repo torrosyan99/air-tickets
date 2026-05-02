@@ -13,6 +13,7 @@ export const Layout = () => {
 
   useEffect(() => {
     document.body.style.backgroundColor = '#F7F5F9';
+    window.scrollTo(0 , 0)
 
     return () => {
       document.body.style.backgroundColor = '';
