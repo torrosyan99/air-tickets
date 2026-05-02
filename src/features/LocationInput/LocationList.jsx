@@ -1,4 +1,4 @@
-import {normalizeCity} from "@/shared/utils/normalizeCity/normalizeCity.js";
+import { normalizeCity } from '@/shared/utils/normalizeCity/normalizeCity.js';
 
 export const LocationList = ({ items, focused, setValue }) => {
 

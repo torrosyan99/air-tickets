@@ -1,16 +1,18 @@
-import {useState} from 'react';
+import { useState } from 'react';
 
-import {LocationList} from './LocationList.jsx';
 
-import {useCitiesSearch} from '@/shared/hooks/useCItiesSearch/useCitiesSearch.jsx';
-import {Input} from '@/shared/ui/Input/Input.jsx';
-import LocationSvg from "@icons/location-2.svg?react"
+import { useCitiesSearch } from '@/shared/hooks/useCItiesSearch/useCitiesSearch.jsx';
+import { Input } from '@/shared/ui/Input/Input.jsx';
+
+import LocationSvg from '@icons/location-2.svg?react'
+
+import { LocationList } from './LocationList.jsx';
 
 import './LocationInput.css'
 
-export const LocationInput = ({placeholder, value, error, setValue}) => {
+export const LocationInput = ({ placeholder, value, error, setValue }) => {
   const [focused, setFocused] = useState(false);
-  const {data:items = []} = useCitiesSearch(value);
+  const { data:items = [] } = useCitiesSearch(value);
 
   const onFocus = () => setFocused(true);
   const onBlur = () =>    setFocused(false)
@@ -28,8 +30,6 @@ export const LocationInput = ({placeholder, value, error, setValue}) => {
       id:  null
     })
   }
-
-
 
 
   return (

@@ -1,7 +1,10 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from 'react';
+
 import './LastTickets.css'
-import {API} from "@/shared/api/index.js";
-import {LastTicketsItem} from "./LastTicketsItem.jsx";
+import { API } from '@/shared/api/index.js';
+
+import { LastTicketsItem } from './LastTicketsItem.jsx';
+
 
 export const LastTickets = () => {
   const [data, setData] = useState([]);

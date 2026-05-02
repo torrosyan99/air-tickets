@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 
+
 import { Container } from '@/shared/ui/Container/Container.jsx';
 import { Logo } from '@/shared/ui/Logo/Logo.jsx';
-import {useScrollToHash} from './useScrollToHash.jsx'
+
+import { useScrollToHash } from './useScrollToHash.jsx'
 
 import './Header.css'
 

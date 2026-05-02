@@ -1,0 +1,10 @@
+.passengers {
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    width: 100%;
+}
+
+.passengers__button {
+    margin: 103px 0 0 auto;
+}

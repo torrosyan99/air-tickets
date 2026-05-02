@@ -5,6 +5,7 @@
     background-color: var(--white-bg);
     position: relative;
     transition: .2s background-color ease-in-out;
+    cursor: pointer;
 }
 
 .switcher--active {

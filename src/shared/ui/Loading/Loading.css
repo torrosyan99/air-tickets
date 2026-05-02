@@ -1,0 +1,14 @@
+.loading {
+padding: 180px 0 160px;
+    background-color: var(--dark-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.loading__title  {
+    color: var(--gray-color-2);
+    font-weight: 700;
+    text-transform: uppercase;
+}

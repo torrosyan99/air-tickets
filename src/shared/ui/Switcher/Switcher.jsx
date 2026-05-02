@@ -1,8 +1,8 @@
-import {cn} from "@/shared/utils/cn/cn.js";
+import { cn } from '@/shared/utils/cn/cn.js';
 
 import './Switcher.css';
 
-export const Switcher = ({className, isActive, onClick}) => {
+export const Switcher = ({ className, isActive, onClick }) => {
   return (
     <div className={cn('switcher', [className], {
       'switcher--active': isActive

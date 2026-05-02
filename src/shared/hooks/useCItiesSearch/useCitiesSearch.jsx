@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+
 import { API } from '@/shared/api/index.js';
 
 const fetchCities = async (query) => {

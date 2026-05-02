@@ -3,14 +3,22 @@
     position: relative;
 }
 
+
 .input {
     width: 100%;
-    padding: 17px 21px;
+    height: 60px;
+    padding: 0 21px 0 21px;
     background-color: var(--white-bg);
     border-radius: 3px;
     color: var(--primary-color);
 }
 
+.input-wrapper--small .input  {
+    height: 50px;
+    padding: 0 17px;
+    border: 1px solid var(--gray-2-border-color);
+    border-radius: 5px;
+}
 .input:focus {
     outline: none;
 }

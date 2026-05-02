@@ -14,15 +14,28 @@
     transition: .2s box-shadow ease-in-out, .2s background-color ease-in-out, .2s color ease-in-out;
 }
 
+.button:disabled {
+    background: #928F94;
+}
+
 .button:hover {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 .button:active {
-    border: 1px solid var(--orange-color);
+    border: 1px solid var(--orange-border-color);
     background-color: transparent;
     color: var(--orange-color);
 }
+
+.button--black-ghost:hover {
+color: var(--orange-color);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.button--black-ghost:active {
+   background: var(--orange-color);
+    color: var(--primary-color);}
 
 .button--ghost:hover {
     box-shadow: none;
@@ -42,11 +55,21 @@
 
 .button--ghost {
     background-color: transparent;
-    border: 1px solid var(--secondary-color);
+    border: 1px solid var(--whtie-border-color);
 }
 
+.button--black-ghost {
+    border: 1px solid var(--black-border-color);
+    background-color: transparent;
+}
 .button--white-color {
     color: var(--secondary-color);
+}
+
+.button--full-s {
+    min-width: 100%;
+    width: 100%;
+    height: 39px;
 }
 
 .button--sm {

@@ -1,8 +1,9 @@
-import {Route, Routes} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
-import {routerConfig} from '@/shared/configs/routerConfig/routerConfig.jsx';
-import {BookingTop} from "@/widgets/BookingTop/BookingTop.jsx";
-import {BookingLayout} from "@/pages/Layouts/BookingLayout.jsx";
+import { Layout } from '@/pages/Layouts/Layout.jsx';
+import { routerConfig } from '@/shared/configs/routerConfig/routerConfig.jsx';
+import { BookingTop } from '@/widgets/BookingTop/BookingTop.jsx';
+
 
 export const AppRouter = () => {
   return (
@@ -13,9 +14,9 @@ export const AppRouter = () => {
           return <Route key={route.path} element={<Component/>} path={route.path}/>
         })
       }
-      <Route element={<BookingLayout/>}>
+      <Route element={<Layout/>}>
         {
-          routerConfig.booking.map((route) => {
+          routerConfig.layout.map((route) => {
             const Component = route.component;
             return   <Route key={route.path} element={<Component/>} path={route.path}/>
           })

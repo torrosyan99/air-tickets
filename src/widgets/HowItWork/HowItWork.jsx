@@ -1,9 +1,10 @@
 import './HowItWork.css'
-import { HowItWorkList } from './HowItWorkList.jsx';
 
 import { Button } from '@/shared/ui/Button/Button.jsx';
 import { Container } from '@/shared/ui/Container/Container.jsx';
 import { Title } from '@/shared/ui/Title/Title.jsx';
+
+import { HowItWorkList } from './HowItWorkList.jsx';
 
 
 export const HowItWork = () => {

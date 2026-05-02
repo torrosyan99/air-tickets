@@ -1,9 +1,10 @@
+import { LocationInput } from '@/features/LocationInput/LocationInput.jsx';
+
 import ChangeSvg from '@icons/change.svg?react';
 
-import {LocationInput} from '@/features/LocationInput/LocationInput.jsx';
 
-export const BookingRoutes = ({data, setData, errors, setErrors}) => {
-  const setValue = (item, key) => setData({...data, [key]: item});
+export const BookingRoutes = ({ data, setData, errors, setErrors }) => {
+  const setValue = (item, key) => setData({ ...data, [key]: item });
   const changeValues = () => {
     setData({
       ...data,

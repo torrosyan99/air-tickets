@@ -3,6 +3,7 @@ import { Calendar } from '@/shared/ui/Calendar/Calendar.jsx';
 export const BookingDate = ({ data, setData }) => {
   const changeDate = (date, key) => setData({ ...data, [key]: date });
 
+
   return (
     <div className={'booking__date'}>
       <h3 className={'booking__title'}>Дата</h3>

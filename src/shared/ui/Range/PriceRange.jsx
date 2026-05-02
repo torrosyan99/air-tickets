@@ -1,29 +1,27 @@
-import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
-import {useState} from "react";
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+import { useState } from 'react';
 
 import './Range.css'
 
-const Handle = ({props}) => {
+const Handle = ({ props }) => {
   const { value, dragging, index, ...restProps } = props;
   const min = restProps['aria-valuemin'];
   const max = restProps['aria-valuemax'];
   const now = restProps['aria-valuenow'];
-  console.log({min, max, now});
   return (
     <div {...restProps}>
-      <div className="range__prices-hangle">
+      <div className="range__hangle">
         {now !== min && now !== max &&
-          <div className="range__prices-value">{now}</div>}
+          <div className="range__handle-value">{now}</div>}
       </div>
     </div>
   );
 };
 
-export const PriceRange = ({min, max}) => {
-  const [value, setValue] = useState([min, max]);
+export const PriceRange = ({ min, max, to, from, onAfterComplete }) => {
 
-
+  const [value, setValue] = useState([to || min, from  || max]);
   return (
     <div className="range">
       <div className="range__from-to">
@@ -36,7 +34,7 @@ export const PriceRange = ({min, max}) => {
         range
         min={min}
         max={max}
-
+        onChangeComplete={onAfterComplete}
         value={value}
         onChange={(vals) => {
           const [a, b] = vals;
@@ -45,7 +43,7 @@ export const PriceRange = ({min, max}) => {
         }}
       />
 
-      <div className="range__prices">
+      <div className="range__bottom">
         <span>{min}</span>
         <span>{max}</span>
       </div>

@@ -1,6 +1,6 @@
 .sidebar {
-    width: 100%;
-    max-width: 360px;
+    flex-shrink: 0;
+    width: 360px;
     display: flex;
     flex-direction: column;
     gap: 103px;

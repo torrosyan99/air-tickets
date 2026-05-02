@@ -1,9 +1,11 @@
-import {HomePage} from '@/pages/HomePage/HomePage.jsx';
-import {TicketsPage} from '@/pages/TicketsPage/TicketsPage.jsx';
+import { HomePage } from '@/pages/HomePage/HomePage.jsx';
+import { TicketsPage } from '@/pages/TicketsPage/TicketsPage.jsx';
+import {PassengersPage} from "@/pages/Passengers/PassengersPage.jsx";
 
 export const PagePaths = {
   HOMEPAGE: '/',
-  TICKETS: '/tickets'
+  TICKETS: '/tickets',
+  PASSENGERS: '/passengers',
 }
 
 
@@ -12,13 +14,17 @@ export const routerConfig = {
     {
       path: PagePaths.HOMEPAGE,
       component: HomePage,
-    }
-  ],
-  booking: [
+    },
     {
       path: PagePaths.TICKETS,
+      component: TicketsPage,
+    }
+  ],
+  layout: [
+    {
+      path: PagePaths.PASSENGERS,
       component:
-      TicketsPage,
+      PassengersPage,
     }
   ]
 }

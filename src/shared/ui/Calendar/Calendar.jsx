@@ -1,13 +1,16 @@
+import { forwardRef } from 'react';
+import DatePicker from 'react-datepicker';
+
+import { cn } from '@/shared/utils/cn/cn.js';
+
 import CalendarNextSvg from '@icons/calendar-next.svg?react';
 import CalendarPrevSvg from '@icons/calendar-prev.svg?react';
-import {forwardRef} from 'react';
-import DatePicker from 'react-datepicker';
-import CalendarSvg from "@icons/calendar.svg?react"
-import {cn} from "@/shared/utils/cn/cn.js";
+import CalendarSvg from '@icons/calendar.svg?react'
+
 
 import './Calendar.css';
 
-const CustomButton = forwardRef(({value, onClick, small}, ref) => (
+const CustomButton = forwardRef(({ value, onClick, small }, ref) => (
   <div className="calendar__wrapper">
     <input
       ref={ref}
@@ -16,7 +19,7 @@ const CustomButton = forwardRef(({value, onClick, small}, ref) => (
       onClick={onClick}
       readOnly
       placeholder="ДД/ММ/ГГ"
-      className={cn("calendar__input", [], {
+      className={cn('calendar__input', [], {
         ['calendar__input--small']: small,
       })}
     />
@@ -24,12 +27,12 @@ const CustomButton = forwardRef(({value, onClick, small}, ref) => (
   </div>
 ));
 
-export const Calendar = ({date, minDate, maxDate, setDate, small}) => {
+export const Calendar = ({ date, minDate, maxDate, setDate, small }) => {
   return (
     <DatePicker
       selected={date}
       onChange={setDate}
-      minDate={minDate || new Date()}
+      minDate={minDate || new Date}
       maxDate={maxDate}
       customInput={<CustomButton small={small}/>}
       dateFormat="dd/MM/yyyy"
@@ -46,7 +49,7 @@ export const Calendar = ({date, minDate, maxDate, setDate, small}) => {
           </button>
 
           <div className="calendar__month">
-            {date.toLocaleString('default', {month: 'long'})}
+            {date.toLocaleString('default', { month: 'long' })}
           </div>
 
           <button onClick={increaseMonth} type={'button'} disabled={nextMonthButtonDisabled}>

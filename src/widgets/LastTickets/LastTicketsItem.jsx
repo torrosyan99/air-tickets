@@ -1,7 +1,9 @@
-import RubSvg from '@icons/rub.svg?react';
-import {TrainServices} from "@/entities/train/TrainServices/TrainServices.jsx";
+import { TicketServices } from '@/entities/train/TicketServices/TicketServices.jsx';
 
-export const LastTicketsItem = ({departure}) => {
+import RubSvg from '@icons/rub.svg?react';
+
+
+export const LastTicketsItem = ({ departure }) => {
   return (<li className={'last-tickets__item'}>
       <div className={'last-tickets__direction'}>
         <div className={'last-tickets__from'}>
@@ -18,11 +20,10 @@ export const LastTicketsItem = ({departure}) => {
         </div>
       </div>
       <div className={'last-tickets__services'}>
-        <TrainServices {...departure} />
-
+        <TicketServices {...departure} />
         <div className={'last-tickets__price'}>
           <span>от</span>{' '}
-          <span className={'last-tickets__price-value'}>{departure.min_price}</span> {' '}
+          <span className={'last-tickets__price-value'}>{departure.min_price.toLocaleString('ru-RU')}</span> {' '}
           <RubSvg />
         </div>
       </div>

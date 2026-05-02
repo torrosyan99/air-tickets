@@ -6,8 +6,8 @@ import secondImg from '@/shared/assets/images/reviews-img-2.png';
 import { Container } from '@/shared/ui/Container/Container.jsx'
 import { Title } from '@/shared/ui/Title/Title.jsx';
 
-
 import './Reviews.css'
+
 import { ReviewsItem } from './ReviewsItem.jsx';
 
 export const Reviews = () => {
@@ -15,7 +15,6 @@ export const Reviews = () => {
     <section className="reviews" id={'reviews'}>
       <Container>
         <Title>отзывы</Title>
-
         <Swiper
           className={'reviews__slider'}
           slidesPerView={2}
@@ -25,7 +24,6 @@ export const Reviews = () => {
 
         >
           <SwiperSlide>
-
             <ReviewsItem src={firstImg} alt={'img'} name={'Екатерина Вальнова'}>
               Доброжелательные подсказки
               на всех этапах помогут правильно заполнить поля и без затруднений купить авиа или ж/д билет, даже если вы
@@ -70,6 +68,5 @@ export const Reviews = () => {
         </Swiper>
       </Container>
     </section>
-
   );
 };

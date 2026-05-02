@@ -42,3 +42,18 @@
 .filter__switcher {
     margin-left: auto;
 }
+
+.filter__hours-block {
+    display: flex;flex-direction: column;
+    gap: 45px;
+}
+
+.filter__hours-title {
+    font-size: 24px;
+    color: #E5E5E5;
+    margin-bottom: 19px;
+}
+
+.filter__hours-item:last-child .filter__hours-title {
+    text-align: end;
+}

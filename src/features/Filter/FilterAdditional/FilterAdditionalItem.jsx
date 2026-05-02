@@ -1,15 +1,27 @@
-import {Switcher} from "@/shared/ui/Switcher/Switcher.jsx";
-import {useState} from "react";
+import { useTickets } from '@/shared/hooks/useTickets/useTickets.jsx';
+import { Switcher } from '@/shared/ui/Switcher/Switcher.jsx';
 
-export const FilterAdditionalItem = ({icon: Icon, children}) => {
-  const [isActive, setActive] = useState(false);
+export const FilterAdditionalItem = ({ icon: Icon, children, name }) => {
+  const { params, searchTicketsWithParams } = useTickets();
+  const isActive = Boolean(params[name]);
+  const handleToggle = () => {
+    const newParams = { ...params };
+    if (newParams[name]) {
+      delete newParams[name];
+    } else {
+      newParams[name] = true;
+    }
+
+    searchTicketsWithParams(newParams);
+  };
+
   return (
     <div className={'filter__additional-item'}>
       <div className={'filter__icon-wrapper'}>
         {<Icon/>}
       </div>
       <span>{children}</span>
-      <Switcher className="filter__switcher" isActive={isActive} onClick={() => setActive(!isActive)}/>
+      <Switcher className="filter__switcher" isActive={isActive} onClick={handleToggle}/>
     </div>
   );
 };

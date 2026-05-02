@@ -1,8 +1,12 @@
 import './Steps.css'
-import {Container} from "@/shared/ui/Container/Container.jsx";
-import {Step} from "./Step.jsx";
+import { Container } from '@/shared/ui/Container/Container.jsx';
+
+import { Step } from './Step.jsx';
+import {useLocation} from "react-router-dom";
+
 
 export const Steps = () => {
+  const {location} = useLocation();
   return (
     <section className={'steps'}>
       <Container>
