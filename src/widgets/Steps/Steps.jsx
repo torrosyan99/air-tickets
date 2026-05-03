@@ -2,6 +2,7 @@ import './Steps.css';
 import { Container } from '@/shared/ui/Container/Container.jsx';
 import { Step } from './Step.jsx';
 import { useLocation } from "react-router-dom";
+import {cn} from "@/shared/utils/cn/cn.js";
 
 export const Steps = () => {
   const { pathname } = useLocation();
@@ -16,7 +17,9 @@ export const Steps = () => {
   })();
 
   return (
-    <section className={'steps'}>
+    <section className={cn('steps', [], {
+      'steps--fourth': stepIndex === 4,
+    })}>
       <Container>
         <ul className={'steps__list'}>
           <Step active={stepIndex >= 1}>Билеты</Step>

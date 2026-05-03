@@ -25,6 +25,9 @@
     z-index: -1;
 }
 
+.steps--fourth::after {
+    background-color: var(--orange-bg);
+}
 .steps__list {
     display: flex;
 }
