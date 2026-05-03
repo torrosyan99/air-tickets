@@ -4,6 +4,10 @@
     border: 1px solid #C4C4C4;
 }
 
+.passenger-form--closed .passenger-form__content {
+    display: none;
+}
+
 .passenger-form__top {
     padding: 40px 23px;
     display: flex;
@@ -117,6 +121,8 @@
 
 .passenger-form__button {
     margin-left: auto;
+    position: relative;
+    z-index: 30;
 }
 
 .passenger-form__number {
@@ -131,7 +137,21 @@
     inset: 0;
     background-color: #FFB59E;
     padding: 0 24px;
+    z-index: 50;
+}
 
+.passenger-form__error span {
+    font-weight: 700;
+}
+
+.passenger-form__ok {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    inset: 0;
+    background-color: #B2F6A1;
+    padding: 0 24px;
 }
 
 .passenger-form__error-text {

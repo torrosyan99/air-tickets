@@ -38,3 +38,13 @@
     position: absolute;
     z-index: 10;
 }
+
+.input-wrapper--small  .input--error,
+.input--error {
+    color: #ff0000;
+    border: 1px solid #ff0000;
+}
+.input--error::placeholder,
+.input-wrapper--small  .input--error::placeholder {
+    color: #ff0000;
+}

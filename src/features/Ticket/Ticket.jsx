@@ -9,6 +9,7 @@ import {PagePaths} from "@/shared/configs/routerConfig/routerConfig.jsx";
 import {useNavigate} from "react-router-dom";
 
 import './Ticket.css';
+import {ticketActions} from "@/entities/train/model/ticketSlice.js";
 
 export const Ticket = ({id}) => {
   const navigate = useNavigate()
@@ -47,6 +48,7 @@ export const Ticket = ({id}) => {
 
 
   const handleClick = () => {
+    dispatch(ticketActions.saveRouteId(id))
     navigate(PagePaths.PASSENGERS)
   }
 

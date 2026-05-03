@@ -5,6 +5,10 @@ import {getSeats} from "../thunks/getSeats.js";
 const ticketSlice = createSlice({
   name: "TICKET",
   initialState: {
+    personalData: {
+
+    },
+    routeId: "",
     departure: {
       seats: [],
       price: 0,
@@ -17,77 +21,99 @@ const ticketSlice = createSlice({
 
     updateSeats: (state, action) => {
       const direction = action.payload.direction || 'departure';
-      const wagon = state[direction].seats.find(({coach}) => coach.name == action.payload.name);
-      const seat = wagon.seats.find(({index}) => index == action.payload.index);
-      if (seat.isActive) {
-        state[direction].price -= action.payload.price;
-        state[direction].priceForSeats -= action.payload.price
+
+      const wagon = state[direction].seats.find(
+        ({coach}) => coach.name == action.payload.name
+      );
+
+      if (!wagon) return;
+
+      const seat = wagon.seats.find(
+        ({index}) => index == action.payload.index
+      );
+
+      if (!seat) return;
+
+      const price = action.payload.price;
+      const isActive = seat.isActive;
+
+      if (isActive) {
+        state[direction].price -= price;
+        state[direction].priceForSeats -= price;
+
         state[direction].activeSeats = state[direction].activeSeats.filter(
           ({coach_id, seat_number}) =>
-            !(coach_id === action.payload.coachId &&
+            !(coach_id === wagon.coach._id &&
               seat_number === action.payload.index)
         );
       } else {
-        state[direction].price += action.payload.price;
-        state[direction].priceForSeats += action.payload.price
-        state[direction].activeSeats.push({
+        state[direction].price += price;
+        state[direction].priceForSeats += price;
 
-          'coach_id': wagon.coach._id,
-          direction:direction,
-          "person_info": {
-            'first_name': '',
-            'last_name': '',
-            'patronymic':'',
+        state[direction].activeSeats.push({
+          coach_id: wagon.coach._id,
+          direction,
+          person_info: {
+            first_name: '',
+            last_name: '',
+            patronymic: '',
             birthday: '',
             gender: true,
-            document_type:'паспорт',
-            document_data : '',
+            document_type: 'паспорт',
+            document_data: '',
             is_adult: action.payload.type === 'adult'
           },
           is_child: action.payload.type === 'child',
           seat_number: action.payload.index
-        })
+        });
       }
-      seat.isActive = !seat.isActive;
+
+      seat.isActive = !isActive;
     },
 
-    addSeat: (state) => {
+    addSeat: (state, action) => {
       const departureSeats = state.departure.activeSeats;
       const price = departureSeats.length
         ? state.departure.priceForSeats / departureSeats.length
         : 0;
 
+      const emptyPlace = action.payload.emptyPlace;
 
-      let activePlace = null;
+      state.departure.seats = state.departure.seats.map((w) => {
+        return {
+          ...w,
+          seats: w.seats.map((s) => {
+            if (s.index === emptyPlace) {
+              return {
+                ...s,
+                isActive: true,
+              };
+            }
+            return s;
+          }),
+        };
+      });
 
-      for(let i = 0; i < state.departure.seats.length; i++)  {
-        const w = state.departure.seats[i];
-        const index = w.seats.findIndex(s =>s.available && !s.isActive )
-        if(index != '-1') {
-          activePlace= w.seats[index].index;
-          break;
-        }
-      }
-
-      if(!activePlace)return
       state.departure.priceForSeats += price;
       state.departure.price += price;
-      state.departure.activeSeats =[ ...departureSeats , {
-        'coach_id': departureSeats[0].coach_id,
-        direction: departureSeats[0].direction,
-        "person_info": {
-          'first_name': '',
-          'last_name': '',
-          'patronymic':'',
-          birthday: '',
-          gender: true,
-          document_type:'паспорт',
-          document_data : '',
-          is_adult: true,
-        },
-        seat_number: activePlace,
-        is_child: false,
-      }]
+      state.departure.activeSeats = [
+        ...departureSeats, {
+          'coach_id': departureSeats[0].coach_id,
+          direction: departureSeats[0].direction,
+          "person_info": {
+            'first_name': '',
+            'last_name': '',
+            'patronymic': '',
+            birthday: '',
+            gender: true,
+            document_type: 'паспорт',
+            document_data: '',
+            is_adult: true,
+          },
+          seat_number: emptyPlace,
+          is_child: false,
+        }
+      ]
 
 
     },
@@ -97,7 +123,8 @@ const ticketSlice = createSlice({
         ? state.departure.priceForSeats / departureSeats.length
         : 0;
 
-      state[action.payload.direction].activeSeats = state[action.payload.direction].activeSeats.filter(
+      state[action.payload.direction].activeSeats
+        = state[action.payload.direction].activeSeats.filter(
         ({seat_number}) => seat_number != action.payload.seat_number
       );
 
@@ -148,7 +175,7 @@ const ticketSlice = createSlice({
         ({seat_number}) => seat_number === action.payload.seat_number
       )
 
-      if(action.payload.name === 'document_type') {
+      if (action.payload.name === 'document_type') {
         item.person_info.document_data = ''
       }
       item.person_info[action.payload.name] = action.payload.value
@@ -158,7 +185,7 @@ const ticketSlice = createSlice({
       const item = state[action.payload.direction].activeSeats.find(
         ({seat_number}) => seat_number === action.payload.seat_number
       )
-     item.person_info[action.payload.name] = action.payload.value
+      item.person_info[action.payload.name] = action.payload.value
     },
     changeGender: (state, action) => {
       const item = state[action.payload.direction].activeSeats.find(
@@ -174,6 +201,29 @@ const ticketSlice = createSlice({
       item.person_info
     }
 
+    ,
+    updateSeatsTwo: (state, action) => {
+      action.payload.data.forEach((item) => {
+        const i =
+          state[item.direction].activeSeats.find(({coach_id, seat_number}) =>
+            item.coach_id === coach_id && item.seat_number === seat_number);
+        i.person_info.birthday = item.birthday;
+        i.person_info.first_name = item.firstName;
+        i.person_info.last_name = item.lastName;
+        i.person_info.patronymic = item.patronymic;
+        i.person_info.document_type = item.document_type;
+        i.person_info.gender = item.gender;
+
+        if(item.document_type === 'паспорт') i.person_info.document_data = item.document_series + ' ' + item.document_number;
+        else  i.person_info.document_data = item.document_data;
+      });
+    },
+    saveInfo: (state, action)  => {
+      state.personalData = action.payload;
+    },
+    saveRouteId: (state, action) => {
+      state.routeId = action.payload;
+    }
 
   }
   ,

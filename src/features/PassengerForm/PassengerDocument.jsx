@@ -1,89 +1,144 @@
-import {cn} from "@/shared/utils/cn/cn.js";
-import {SimpleSelect} from "@/shared/ui/SimpleSelect/SimpleSelect.jsx";
-import {Input} from "@/shared/ui/Input/Input.jsx";
-import {useDispatch} from "react-redux";
-import {ticketActions} from "@/entities/train/model/ticketSlice.js";
+import { cn } from "@/shared/utils/cn/cn.js";
+import { SimpleSelect } from "@/shared/ui/SimpleSelect/SimpleSelect.jsx";
+import { Input } from "@/shared/ui/Input/Input.jsx";
+import { Controller } from "react-hook-form";
 
-export const PassengerDocument = ({seat}) => {
-  const dispatch = useDispatch();
+export const PassengerDocument = ({
+                                    errors,
+                                    control,
+                                    watch,
+                                    trigger,
+                                    index,
+                                  }) => {
+  const docType = watch(`passengers.${index}.document_type`);
 
-  const handleChange = (value, name) => {
-    dispatch(ticketActions.changePersonInfo({
-      value,
-      direction: seat.direction,
-      seat_number: seat.seat_number,
-      name,
-    }));
-  };
+  const getError = (field) =>
+    errors?.passengers?.[index]?.[field]?.message;
 
-
-  const updateDocumentData = (newSeries, newNumber) => {
-    const value = `${newSeries} ${newNumber}`.trim();
-
-    dispatch(ticketActions.changePersonInfo({
-      value,
-      direction: seat.direction,
-      seat_number: seat.seat_number,
-      name: "document_data",
-    }));
-  };
-
-  const [series = '', number = ''] =
-  seat.person_info.document_data?.split(' ') || [];
   return (
-    <div className={
-      'passenger-form__document'
-    }>
-      <div className={cn('passenger-form__item', [], {
-        'passenger-form__select-full': seat.person_info.document_type !== 'паспорт'
-      })}>
-        <label className={'passenger-form__label'}>
+    <div className="passenger-form__document">
+
+      {/* TYPE */}
+      <div
+        className={cn("passenger-form__item", [], {
+          "passenger-form__select-full": docType !== "паспорт",
+        })}
+      >
+        <label className="passenger-form__label">
           Тип документа
         </label>
-        <SimpleSelect onChange={(value) => handleChange(value, 'document_type')}
-                      options={['паспорт', 'свидетельство о рождении']}
-                      value={seat.person_info.document_type}></SimpleSelect>
+
+        <Controller
+          control={control}
+          name={`passengers.${index}.document_type`}
+          defaultValue="паспорт"
+          render={({ field }) => (
+            <SimpleSelect
+              value={field.value}
+              options={[
+                "паспорт",
+                "свидетельство о рождении",
+              ]}
+              onChange={(val) => {
+                field.onChange(val);
+                trigger([
+                  `passengers.${index}.document_series`,
+                  `passengers.${index}.document_number`,
+                  `passengers.${index}.document_data`,
+                ]);
+              }}
+            />
+          )}
+        />
       </div>
-      {seat.person_info.document_type === 'паспорт' ? <>
 
+      {/* PASSPORT */}
+      {docType === "паспорт" ? (
+        <>
+          <Controller
+            control={control}
+            name={`passengers.${index}.document_series`}
+            rules={{
+              required: "Введите серию",
+              minLength: {
+                value: 4,
+                message: 'Серия должен содержать 4 цифр'
+              }
+            }}
+            render={({ field }) => (
+              <div className="passenger-form__item">
+                <label className="passenger-form__label">
+                  Серия
+                </label>
 
-        <div className={'passenger-form__item'}>
-          <label className={'passenger-form__label'}>
-            Серия
-          </label>
-          <Input variant={'small'}
-                 placeholder={'0 0 0 0'}
-                 onChange={(e) => updateDocumentData(e.target.value, number)}
-                 value={series}
-                 max={4}
-                 onlyNumber
+                <Input
+                  {...field}
+                  variant="small"
+                  placeholder="0 0 0 0"
+                  max={4}
+                  onlyNumber
+                  errorBorder={!!getError("document_series")}
+                />
+              </div>
+            )}
           />
-        </div>
 
-        <div className={'passenger-form__item'}>
-          <label className={'passenger-form__label'}>
-            c
-          </label>
-          <Input variant={'small'}
-                 placeholder={'0 0 0 0 0 0'}
-                 value={number}
-                 max={6}
-                 onlyNumber
-                 onChange={(e) => updateDocumentData(series, e.target.value)}
+          <Controller
+            control={control}
+            name={`passengers.${index}.document_number`}
+            rules={{
+              required: "Введите номер",
+              minLength: {
+                value: 6,
+                message: 'Номер должен содержать 6 цифр'
+              }
+            }}
+            render={({ field }) => (
+              <div className="passenger-form__item">
+                <label className="passenger-form__label">
+                  Номер
+                </label>
+
+                <Input
+                  {...field}
+                  variant="small"
+                  placeholder="0 0 0 0 0 0"
+                  max={6}
+                  onlyNumber
+                  errorBorder={!!getError("document_number")}
+                />
+
+              </div>
+            )}
           />
+        </>
+      ) : (
+        <Controller
+          control={control}
+          name={`passengers.${index}.document_data`}
+          rules={{
+            required: "Введите номер документа",
+            pattern: {
+              value: /^[IVX]+-[А-ЯЁ]{2}-\d{6}$/,
+              message: "Формат: VIII-ЫП-123456",
+            },
+          }}
+          render={({ field, fieldState }) => (
+            <div className="passenger-form__item passenger-form__number">
+              <label className="passenger-form__label">
+                Номер
+              </label>
 
-        </div>
-
-      </> : <div className={'passenger-form__item passenger-form__number'}>
-        <label className={'passenger-form__label'}>
-          Номер
-        </label>
-        <Input
-          placeholder={'_ _ _ _ _ _ _ _ _ _ _ _'}
-
-               onChange={(e) => handleChange(e.target.value, 'document_data')}
-               variant={'small'} value={seat.document_data}/>
-      </div>}
+              <Input
+                {...field}
+                variant="small"
+                placeholder="VIII-ЫП-123456"
+                errorBorder={!!fieldState.error}
+              />
+            </div>
+          )}
+        />
+      )}
     </div>
   );
 };

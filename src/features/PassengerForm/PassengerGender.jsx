@@ -1,31 +1,41 @@
-import {cn} from "@/shared/utils/cn/cn.js"
-import {useDispatch} from "react-redux";
-import {ticketActions} from "@/entities/train/model/ticketSlice.js";
+import { Controller } from "react-hook-form";
+import { cn } from "@/shared/utils/cn/cn.js";
 
-export const PassengerGender = ({seat}) => {
-  const dispatch = useDispatch();
-
-
-  const handleClick = (gender) => dispatch(
-    ticketActions.changePersonInfo({value:gender, name:'gender' ,
-      direction: seat.direction, seat_number: seat.seat_number}));
+export const PassengerGender = ({ control, index }) => {
   return (
-    <div className={'passenger-form__item'}>
-      <label className={'passenger-form__label'}>
-        Пол
-      </label>
-    <div className={'passenger-form__gender'}>
-      <button className={cn('passenger-form__gender-button', [], {
-        'passenger-form__gender-button--active':  seat.person_info.gender
-      })} onClick={() => handleClick(true)}>
-        М
-      </button>
-      <button className={cn('passenger-form__gender-button', [], {
-        'passenger-form__gender-button--active':  !seat.person_info.gender
-      })} onClick={() => handleClick(false)}>
-        Ж
-      </button>
-    </div>
+    <div className="passenger-form__item">
+      <label className="passenger-form__label">Пол</label>
+
+      <Controller
+        control={control}
+        name={`passengers.${index}.gender`}
+        defaultValue={true} // true = М, false = Ж
+        render={({ field }) => (
+          <div className="passenger-form__gender">
+
+            <button
+              type="button"
+              className={cn("passenger-form__gender-button", [], {
+                "passenger-form__gender-button--active": field.value === true,
+              })}
+              onClick={() => field.onChange(true)}
+            >
+              М
+            </button>
+
+            <button
+              type="button"
+              className={cn("passenger-form__gender-button", [], {
+                "passenger-form__gender-button--active": field.value === false,
+              })}
+              onClick={() => field.onChange(false)}
+            >
+              Ж
+            </button>
+
+          </div>
+        )}
+      />
     </div>
   );
 };

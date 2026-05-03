@@ -30,13 +30,15 @@ export function SimpleSelect({
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
-  const filteredOptions = options.filter((item) => item.toLocaleLowerCase() !== value.toLocaleLowerCase());
-
+  const filteredOptions = options.filter(
+    (item) => item.toLowerCase() !== (value || "").toLowerCase()
+  );
   return (
     <div className={cn('simple-select', [className], {
       'simple-select--open': open,
     })} ref={ref}>
       <button
+        type={'button'}
         onClick={() => setOpen((prev) => !prev)}
         className={cn('simple-select__button', [buttonClass])}
       >

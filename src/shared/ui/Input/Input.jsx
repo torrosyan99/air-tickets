@@ -6,6 +6,7 @@ import './Input.css';
 
 export const Input = forwardRef((
   {
+    errorBorder,
     className,
     inputClass,
     children,
@@ -40,7 +41,9 @@ export const Input = forwardRef((
       <input
         ref={ref}
         type="text"
-        className={cn('input', [inputClass])}
+        className={cn('input', [inputClass], {
+          'input--error': errorBorder,
+        })}
         maxLength={max}
         onChange={handleChange}
         {...others}

@@ -33,6 +33,7 @@ export function Select({
       'select--open': open,
     })} ref={ref}>
       <button
+        type={'button'}
         onClick={() => setOpen((prev) => !prev)}
         className={cn('select__button', [buttonClass])}
       >
