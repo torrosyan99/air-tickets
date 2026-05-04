@@ -32,11 +32,10 @@ export const TicketWagon = ({ passengers, arrival }) => {
 
           {
             seats.filter(({ coach }) => activeWagons.includes(coach.name)).map((wagon) =>
-              <>
+              <div className={'ticket__wagons-item'} key={wagon.coach.name}>
                 <TicketWagonInfo wagon={wagon} arrival={arrival}/>
                 <TicketSchema wagon={wagon} type={activeType} passengers={passengers} arrival={arrival}/>
-              </>)}
-
+              </div>)}
         </>
       )}
     </div>

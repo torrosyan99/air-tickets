@@ -215,7 +215,7 @@
     padding-right: 58px;
 }
 
-.ticket__schema + .ticket__wagon-info {
+.ticket__wagons-item + .ticket__wagons-item {
     margin-top: 73px;
     padding-top: 33px;
     border-top: 1px dashed var(--gray-3-border-color);
