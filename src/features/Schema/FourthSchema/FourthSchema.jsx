@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import fourthSchema from '@/shared/assets/images/fourth-schema.svg';
-import './ForuthSchema.css';
 import { SchemaName } from "../SchemaName.jsx";
+
+import './ForuthSchema.css';
+import {cn} from "@/shared/utils/cn/cn.js";
 
 export const FourthSchema = ({
                                wagon,
@@ -18,13 +20,14 @@ export const FourthSchema = ({
     bottom_price,
     have_wifi,
     wifi_price,
+    side_price,
     is_linens_included,
     linens_price,
   } = coach;
 
   const priceTooltip = useMemo(() => {
-    const prices = [top_price, bottom_price].filter(
-      (p) => typeof p === "number"
+    const prices = [top_price, bottom_price, side_price].filter(
+      (p) => typeof p === "number" && p !== 0
     );
 
     const base = prices.length ? Math.min(...prices) : 0;
@@ -69,21 +72,7 @@ export const FourthSchema = ({
     setActiveSeat((prev) => (prev === seat.index ? null : seat.index));
   };
 
-  // выбор типа пассажира → ДОБАВЛЕНИЕ
-  const handleSelect = (type) => {
-    if (!activeSeatData) return;
 
-    onSeatClick(
-      activeSeatData.index,
-      priceTooltip,
-      type,
-      false
-    );
-
-    setActiveSeat(null);
-  };
-
-  // закрытие по клику вне
   useEffect(() => {
     const handlePointerDown = (e) => {
       if (!containerRef.current) return;
@@ -117,9 +106,11 @@ export const FourthSchema = ({
         {currentSeats.map((seat) => (
           <li
             key={seat.index}
-            className={`fourth-schema__seat fourth-schema__seat_${seat.index}
-              ${seat.available ? " fourth-schema__seat_available" : ""}
-              ${seat.isActive ? " fourth-schema__seat_active" : ""}`}
+            className={cn(`fourth-schema__seat fourth-schema__seat_${seat.index}`,
+              [], {
+                'fourth-schema__seat_available': seat.available,
+                'fourth-schema__seat_active': seat.isActive,
+              })}
             onClick={(e) => handleSeatClick(seat, e)}
           >
             {seat.index}

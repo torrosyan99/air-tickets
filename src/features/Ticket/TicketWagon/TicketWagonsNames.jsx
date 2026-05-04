@@ -1,7 +1,7 @@
 import {cn} from "@/shared/utils/cn/cn.js";
 import {useMemo} from "react";
 import {useSelector} from "react-redux";
-import {seatsSelector} from "@/entities/train/model/selectors.jsx";
+import {seatsSelector} from "@/entities/ticket/model/selectors.jsx";
 
 export const TicketWagonsNames = ({activeWagons,activeType, setActiveWagons}) => {
   const seats = useSelector(seatsSelector);

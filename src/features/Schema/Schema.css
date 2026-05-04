@@ -2,14 +2,13 @@
     position: absolute;
     top: 0;
     left: 4.45%;
-
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 2px;
     height: 16.78%;
-    color: #fff;
-    background-color: #000;
+    color: var(--secondary-color);
+    background-color: var(--black-bg);
 }
 
 

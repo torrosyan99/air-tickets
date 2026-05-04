@@ -12,7 +12,7 @@
     --swiper-pagination-bullet-horizontal-gap: calc(10.83px / 2);
     --swiper-pagination-bullet-size: 19px;
     --swiper-pagination-bullet-inactive-color: var(--gray-color);
-    --swiper-pagination-color: #C4C4C4;
+    --swiper-pagination-color: var(--gray-color-3);
     --swiper-pagination-bullet-inactive-opacity: 1;
 }
 

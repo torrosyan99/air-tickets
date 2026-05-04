@@ -1,10 +1,9 @@
-
-import { useTickets } from '@/shared/hooks/useTickets/useTickets.jsx';
+import { useTickets } from '@/shared/hooks/useTickets/useTickets.jsx'
 import { HoursRange } from '@/shared/ui/Range/HoursRange.jsx';
 import { ToggleContent } from '@/shared/ui/ToggleContent/ToggleContent.jsx';
-
 import ArrowOrangeLeft from '@icons/arrow-orange-left.svg?react';
 import ArrowOrangeRight from '@icons/arrow-orange-right.svg?react';
+import {Title} from "@/shared/ui/Title/Title.jsx";
 
 const FIELDS = [
   {
@@ -57,7 +56,7 @@ export const FilterHours = () => {
       <div key={prefix} className="filter__block filter__hours-block">
         <ToggleContent
           icon={icon}
-          title={<h3 className="filter__title">{title}</h3>}
+          title={<Title className="filter__title" h={3}>{title}</Title>}
         >
           {FIELDS.map(({ label, from, to }) => {
             const fromKey = `${prefix}_${from}`;
@@ -65,7 +64,7 @@ export const FilterHours = () => {
 
             return (
               <div key={fromKey} className="filter__hours-item">
-                <h5 className="filter__hours-title">{label}</h5>
+                <Title h={4} className="filter__hours-title">{label}</Title>
 
                 <HoursRange
                   from={params[fromKey]}

@@ -43,7 +43,7 @@
     left: 21px;
     top: 50%;
     transform: translateY(-50%);
-    color: #C4C4C4;
+    color: var(--gray-color-3);
 }
 
 .location-input__clue-hidden {

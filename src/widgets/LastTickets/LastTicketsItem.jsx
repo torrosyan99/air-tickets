@@ -1,6 +1,7 @@
-import { TicketServices } from '@/entities/train/TicketServices/TicketServices.jsx';
+import { TicketServices } from '@/entities/ticket/TicketServices/TicketServices.jsx';
 
 import RubSvg from '@icons/rub.svg?react';
+import {formatPrice} from "@/shared/utils/formatePrice/formatePrice.js";
 
 
 export const LastTicketsItem = ({ departure }) => {
@@ -23,7 +24,7 @@ export const LastTicketsItem = ({ departure }) => {
         <TicketServices {...departure} />
         <div className={'last-tickets__price'}>
           <span>от</span>{' '}
-          <span className={'last-tickets__price-value'}>{departure.min_price.toLocaleString('ru-RU')}</span> {' '}
+          <span className={'last-tickets__price-value'}>{formatPrice(departure.min_price)}</span> {' '}
           <RubSvg />
         </div>
       </div>

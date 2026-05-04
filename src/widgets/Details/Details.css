@@ -6,17 +6,14 @@
 
 .details__main-title {
     text-align: center;
-    font-size: 30px;
-    font-weight: 500;
     padding-bottom: 30px;
     border-bottom: 1px solid var(--gray-border-color);
 }
 
 .details__title {
-    font-size: 30px;
-    font-weight: 700;
     color: var(--secondary-color);
 }
+
 .details__block {
     padding: 22px 27px 34px;
     border-bottom: 1px solid var(--gray-border-color);
@@ -36,8 +33,6 @@
 }
 
 .details__info-train {
-    font-size: 24px;
-    font-weight: 700;
     text-align: end;
 }
 
@@ -52,11 +47,6 @@
     display: flex;
     justify-content: space-between;
     margin-top: 51px;
-}
-
-.details__graphic-item {
-    font-size: 24px;
-    font-weight: 700;
 }
 
 .details__duration {
@@ -81,9 +71,11 @@
 {
     text-align: end;
 }
+
 .details__info-place {
     text-transform: capitalize;
 }
+
 .details__info-place span  {
     display: block;
     font-size: 16px;
@@ -98,6 +90,7 @@
 .details__passengers .details__info-item {
     align-items: center;
 }
+
 .details__info-price {
     font-size: 24px;
     font-weight: 700;

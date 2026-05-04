@@ -3,8 +3,6 @@
 }
 
 .ticket__title {
-    font-size: 30px;
-    font-weight: 500;
     margin-bottom: 48px;
 }
 
@@ -56,9 +54,7 @@
 }
 
 .ticket__train-title {
-    font-size: 24px;
     text-wrap: nowrap;
-    font-weight: 500;
     margin-bottom: 5px;
     color: var(--dark-color);
 }
@@ -75,9 +71,7 @@
 }
 
 .ticket__graphic-hours {
-    font-size: 24px;
-    font-weight: 700;
-    color: #000;
+    color: var(--black-color);
 }
 
 .ticket__graphic-place {
@@ -90,12 +84,10 @@
 }
 
 .ticket__duration {
-    color: #000;
+    color: var(--black-color);
 }
 
 .ticket__item-title {
-    font-size: 30px;
-    font-weight: 700;
     margin-left: 19px;
 }
 
@@ -135,7 +127,6 @@
     background: #f7f6f6;
     outline: 1px solid transparent;
 }
-
 
 .ticket__wagon {
     margin-top: 48px;
@@ -189,7 +180,7 @@
     font-size: 24px;
     font-weight: 700;
     margin-left: 4px;
-    color: #000;
+    color: var(--black-color);
 }
 
 .ticket__wagons-button--active {

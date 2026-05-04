@@ -4,6 +4,7 @@ import { Switcher } from '@/shared/ui/Switcher/Switcher.jsx';
 export const FilterAdditionalItem = ({ icon: Icon, children, name }) => {
   const { params, searchTicketsWithParams } = useTickets();
   const isActive = Boolean(params[name]);
+
   const handleToggle = () => {
     const newParams = { ...params };
     if (newParams[name]) {

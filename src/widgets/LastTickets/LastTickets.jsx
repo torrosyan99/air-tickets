@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import './LastTickets.css'
 import { API } from '@/shared/api/index.js';
 
 import { LastTicketsItem } from './LastTicketsItem.jsx';
+import {Title} from "@/shared/ui/Title/Title.jsx";
 
+import './LastTickets.css'
 
 export const LastTickets = () => {
   const [data, setData] = useState([]);
@@ -17,9 +18,9 @@ export const LastTickets = () => {
 
   return data.length > 0 && (
     <div className="last-tickets">
-      <h3 className={'last-tickets__title'}>
+      <Title variant={'medium'} className={'last-tickets__title'}>
         последние билеты
-      </h3>
+      </Title>
       <ul className={'last-tickets__list'}>
         {data.map((item) => (
         <LastTicketsItem  key={item.departure._id} {...item} />  ))}

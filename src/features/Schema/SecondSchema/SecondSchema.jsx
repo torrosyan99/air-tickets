@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import secondSchema from "@/shared/assets/images/schema.svg";
-import "./SecondSchema.css";
 import { SchemaName } from "../SchemaName.jsx";
+import {cn} from "@/shared/utils/cn/cn.js";
+
+import "./SecondSchema.css";
 
 export const SecondSchema = ({
                                wagon,
@@ -25,7 +27,7 @@ export const SecondSchema = ({
 
   const priceTooltip = useMemo(() => {
     const prices = [top_price, bottom_price, side_price].filter(
-      (p) => typeof p === "number"
+      (p) => typeof p === "number" && p !== 0
     );
 
     const base = prices.length ? Math.min(...prices) : 0;
@@ -49,29 +51,24 @@ export const SecondSchema = ({
     return currentSeats.find((s) => s.index === activeSeat);
   }, [currentSeats, activeSeat]);
 
-  // 🚀 клик по месту
   const handleSeatClick = (seat, e) => {
     e.stopPropagation();
 
     if (!seat.available) return;
 
-    // удаление если уже активен
     if (seat.isActive) {
       onSeatClick(seat.index, priceTooltip, "adult", true);
       return;
     }
 
-    // direct режим → сразу добавляем
     if (selectionMode === "direct") {
       onSeatClick(seat.index, priceTooltip, "adult", false);
       return;
     }
 
-    // dropdown режим
     setActiveSeat((prev) => (prev === seat.index ? null : seat.index));
   };
 
-  // выбор пассажира
   const handleSelect = (type) => {
     if (!activeSeatData) return;
 
@@ -85,7 +82,6 @@ export const SecondSchema = ({
     setActiveSeat(null);
   };
 
-  // закрытие по клику вне
   useEffect(() => {
     const handlePointerDown = (e) => {
       if (!containerRef.current) return;
@@ -100,7 +96,6 @@ export const SecondSchema = ({
       document.removeEventListener("pointerdown", handlePointerDown, true);
   }, []);
 
-  // защита от внешнего изменения active
   useEffect(() => {
     if (activeSeatData?.isActive) {
       setActiveSeat(null);
@@ -121,9 +116,12 @@ export const SecondSchema = ({
         {currentSeats.map((seat) => (
           <li
             key={seat.index}
-            className={`second-schema__seat second-schema__seat_${seat.index}
-              ${seat.available ? " second-schema__seat_available" : ""}
-              ${seat.isActive ? " second-schema__seat_active" : ""}`}
+            className={cn(`second-schema__seat second-schema__seat_${seat.index}`,
+              [], {
+              'second-schema__seat_available': seat.available,
+              'second-schema__seat_active': seat.isActive,
+            })
+          }
             onClick={(e) => handleSeatClick(seat, e)}
           >
             {seat.index}

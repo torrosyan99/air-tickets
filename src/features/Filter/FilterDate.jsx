@@ -19,7 +19,6 @@ export const FilterDate = () => {
       <div className={'filter__date-item'}>
         <h3 className={'filter__title'}>Дата поездки</h3>
         <Calendar small
-
                   date={startDate}
                   maxDate={endDate}
                   setDate={(date) => changeDate(date, 'date_start')}

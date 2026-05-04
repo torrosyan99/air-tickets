@@ -9,17 +9,13 @@
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
     background: #fff;
     width: 100%;
-    border: 1px solid #c4c4c4;
+    border: 1px solid var(--gray-3-border-color);
 }
 
 .result__block-top {
     padding: 34px;
     background-color: #f9f9f9;
-    border-bottom: 1px dashed #928f94;;
-}
-
-.result__title {
-    font-size: 30px;
+    border-bottom: 1px dashed var(--gray-3-border-color);
 }
 
 .result__block .ticket {
@@ -56,13 +52,13 @@
 }
 
 .result__info-value {
-    color: #928F94;
+    color: var(--gray-color-2);
     margin-bottom: 12px;
 }
 
 .result__right {
     width: 281px;
-    border-left: 1px dashed #928f94;
+    border-left: 1px dashed var(--gray-2-border-color);
     display: flex;
     flex-direction: column;
     align-items: flex-end;

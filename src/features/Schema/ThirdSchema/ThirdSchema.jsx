@@ -1,17 +1,18 @@
-import { useEffect, useRef, useState, useMemo } from "react";
+import {useEffect, useRef, useState, useMemo} from "react";
 import thirdSchema from "@/shared/assets/images/third-schema.svg";
 import "./ThirdSchema.css";
-import { SchemaName } from "../SchemaName.jsx";
+import {SchemaName} from "../SchemaName.jsx";
+import {cn} from "@/shared/utils/cn/cn.js";
 
 export const ThirdSchema = ({
                               wagon,
                               onSeatClick,
-                              selectionMode = "direct", // "dropdown" | "direct"
+                              selectionMode = "direct",
                             }) => {
   const [activeSeat, setActiveSeat] = useState(null);
   const containerRef = useRef(null);
 
-  const { coach, seats: currentSeats } = wagon;
+  const {coach, seats: currentSeats} = wagon;
 
   const {
     top_price,
@@ -25,7 +26,7 @@ export const ThirdSchema = ({
 
   const priceTooltip = useMemo(() => {
     const basePrices = [top_price, bottom_price, side_price].filter(
-      (p) => typeof p === "number"
+      (p) => typeof p === "number" && p !== 0
     );
 
     const base = basePrices.length ? Math.min(...basePrices) : 0;
@@ -49,29 +50,24 @@ export const ThirdSchema = ({
     return currentSeats.find((s) => s.index === activeSeat);
   }, [currentSeats, activeSeat]);
 
-  // 🚀 клик по месту
   const handleSeatClick = (seat, e) => {
     e.stopPropagation();
 
     if (!seat.available) return;
 
-    // если уже выбран → удаляем
     if (seat.isActive) {
       onSeatClick(seat.index, priceTooltip, "adult", true);
       return;
     }
 
-    // direct режим → сразу добавляем
     if (selectionMode === "direct") {
       onSeatClick(seat.index, priceTooltip, "adult", false);
       return;
     }
 
-    // dropdown режим
     setActiveSeat((prev) => (prev === seat.index ? null : seat.index));
   };
 
-  // выбор пассажира
   const handleSelect = (type) => {
     if (!activeSeatData) return;
 
@@ -85,7 +81,6 @@ export const ThirdSchema = ({
     setActiveSeat(null);
   };
 
-  // закрытие по клику вне
   useEffect(() => {
     const handlePointerDown = (e) => {
       if (!containerRef.current) return;
@@ -115,15 +110,18 @@ export const ThirdSchema = ({
         alt="platzkart"
       />
 
-      <SchemaName name={coach.name} />
+      <SchemaName name={coach.name}/>
 
       <ul className="third-schema__schema">
         {currentSeats.map((seat) => (
           <li
             key={seat.index}
-            className={`third-schema__seat third-schema__seat_${seat.index}
-              ${seat.available ? " third-schema__seat_available" : ""}
-              ${seat.isActive ? " third-schema__seat_active" : ""}`}
+            className={cn(`third-schema__seat third-schema__seat_${seat.index}`,
+              [], {
+                'third-schema__seat_available': seat.available,
+                'third-schema__seat_active': seat.isActive,
+              })
+            }
             onClick={(e) => handleSeatClick(seat, e)}
           >
             {seat.index}

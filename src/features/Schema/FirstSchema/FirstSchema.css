@@ -33,7 +33,7 @@
 }
 
 .first-schema__seat_available {
-    color: #000;
+    color: var(--black-color);
     background-color: #ebebeb;
 }
 
@@ -51,9 +51,7 @@
 
 .first-schema__seat_active:hover {
     z-index: 1;
-
-    color: #000;
-
+    color: var(--black-color);
     cursor: pointer;
     outline: 2px solid #ffa800;
 }

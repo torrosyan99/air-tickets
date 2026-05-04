@@ -1,10 +1,11 @@
 import {useState} from "react";
 import {TicketWagonInfo} from "./TicketWagonInfo.jsx";
-import {seatsSelector} from "@/entities/train/model/selectors.jsx";
+import {seatsSelector} from "@/entities/ticket/model/selectors.jsx";
 import {useSelector} from "react-redux";
 import {TicketTypes} from "./TicketTypes.jsx";
-import {TicketWagonsNames} from "@/features/Ticket/TicketWagon/TicketWagonsNames.jsx";
-import {TicketSchema} from "@/features/Ticket/TicketSchema/TicketSchema.jsx";
+import {TicketWagonsNames} from "./TicketWagonsNames.jsx";
+import {TicketSchema} from "../TicketSchema/TicketSchema.jsx";
+import {Title} from "@/shared/ui/Title/Title.jsx";
 
 
 export const TicketWagon = ({passengers, arrival}) => {
@@ -16,7 +17,7 @@ export const TicketWagon = ({passengers, arrival}) => {
 
   return (
     <div className="ticket__wagon">
-      <h3 className="ticket__item-title">Тип вагона</h3>
+      <Title h={3} variant={'bold'} className="ticket__item-title">Тип вагона</Title>
 
       <TicketTypes
         activeType={activeType}

@@ -14,7 +14,7 @@ export const Reviews = () => {
   return (
     <section className="reviews" id={'reviews'}>
       <Container>
-        <Title>отзывы</Title>
+        <Title>ОТЗЫВЫ</Title>
         <Swiper
           className={'reviews__slider'}
           slidesPerView={2}

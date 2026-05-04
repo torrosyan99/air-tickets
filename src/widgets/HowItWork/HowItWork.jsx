@@ -12,7 +12,7 @@ export const HowItWork = () => {
     <section className="how-it-work" id={'how-it-work'}>
       <Container>
         <div className={'how-it-work__top'}>
-          <Title>Как это работает</Title>
+          <Title>КАК ЭТО РАБОТАЕТ</Title>
           <Button variant={'ghost'} color={'white'}>
             Узнать больше
           </Button>

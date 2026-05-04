@@ -1,4 +1,5 @@
 import { TicketCountsInput } from "./TicketCountsInput.jsx";
+import {Title} from "@/shared/ui/Title/Title.jsx";
 
 export const TicketCounts = ({ passengers = {}, setPassengers }) => {
 
@@ -24,20 +25,20 @@ export const TicketCounts = ({ passengers = {}, setPassengers }) => {
 
   return (
     <>
-      <h3 className="ticket__item-title">
+      <Title h={3} variant={'bold'} className="ticket__item-title">
         Количество билетов
-      </h3>
+      </Title>
 
       <div className="ticket__counts">
 
         <TicketCountsInput
-          value={`Взрослых — ${passengers.old ?? 0}`}
-          onChange={(e) => handleChange(e, 'old', 5)}
+          value={`Взрослых — ${passengers.adult ?? 0}`}
+          onChange={(e) => handleChange(e, 'adult', 5)}
         >
-          {passengers.old !== 5 && (
+          {passengers.adult !== 5 && (
             <p className="ticket__counts-text">
-              Можно добавить {passengers.old > 0 && "еще "}
-              {5 - (passengers.old ?? 0) || 5} пассажиров
+              Можно добавить {passengers.adult > 0 && "еще "}
+              {5 - (passengers.adult ?? 0) || 5} пассажиров
             </p>
           )}
         </TicketCountsInput>
@@ -61,7 +62,7 @@ export const TicketCounts = ({ passengers = {}, setPassengers }) => {
             handleChange(
               e,
               'children_without_place',
-              passengers.old ?? 0
+              passengers.adult ?? 0
             )
           }
         />

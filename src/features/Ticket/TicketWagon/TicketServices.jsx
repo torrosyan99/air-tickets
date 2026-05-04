@@ -3,9 +3,9 @@ import WiFiSvg from '@icons/wagon-wi-fi.svg?react'
 import UnderwearSvg from '@icons/wagon-underwear.svg?react'
 import CoffeeSvg from '@icons/wagon-coffee.svg?react'
 import {TicketServicesButton} from "./TicketServicesButton.jsx";
-import {ticketActions} from "@/entities/train/model/ticketSlice.js";
+import {ticketActions} from "@/entities/ticket/model/ticketSlice.js";
 import {useDispatch, useSelector} from "react-redux";
-import {servicesSelector} from "@/entities/train/model/selectors.jsx";
+import {servicesSelector} from "@/entities/ticket/model/selectors.jsx";
 export const TicketServices = ({ wagon, arrival }) => {
   const services = useSelector((state) => servicesSelector(state, arrival && 'arrival'));
   const dispatch = useDispatch();

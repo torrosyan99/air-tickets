@@ -3,8 +3,8 @@ import {ThirdSchema} from "@/features/Schema/ThirdSchema/ThirdSchema.jsx";
 import {SecondSchema} from "@/features/Schema/SecondSchema/SecondSchema.jsx";
 import {FirstSchema} from "@/features/Schema/FirstSchema/FirstSchema.jsx";
 import {useDispatch, useSelector} from "react-redux";
-import {activeSeatsSelector} from "@/entities/train/model/selectors.jsx";
-import {ticketActions} from "@/entities/train/model/ticketSlice.js";
+import {activeSeatsSelector} from "@/entities/ticket/model/selectors.jsx";
+import {ticketActions} from "@/entities/ticket/model/ticketSlice.js";
 
 export const TicketSchema = ({wagon, type, passengers, arrival}) => {
   const dispatch = useDispatch();
@@ -21,19 +21,20 @@ export const TicketSchema = ({wagon, type, passengers, arrival}) => {
 
 
   const isChildren = passengers.children !== children;
-  const mode = (passengers.old !== adults &&
-  passengers.old !== adults
+  const mode = (passengers.adult !== adults &&
+  passengers.adult !== adults
   && passengers.children > 0
   && isChildren ? 'dropdown' : 'direct')
 
   const onSeatClick = (i, p, type, isRemoving) => {
-    if (activeSeats.length === (Number(passengers.old) + Number(passengers.children)) && !isRemoving) return;
+    if (activeSeats.length === (Number(passengers.adult) + Number(passengers.children)) && !isRemoving) return;
     let t = type;
 
     if (mode === 'direct' && isChildren) t = 'child'
 
+
     dispatch(ticketActions.updateSeats(
-      {index: i, name: wagon.coach.name, type: t, id: wagon.coach._id, price: p, direction: arrival && 'arrival'}))
+      {index: i, name: wagon.coach.name, type: t,  id: wagon.coach._id, price: p, direction: arrival && 'arrival'}))
   }
 
   return (

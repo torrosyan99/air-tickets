@@ -1,10 +1,10 @@
 import { useMemo, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { useGetRoutesQuery } from '@/entities/train/api/getRoutes.js';
+import { useGetRoutesQuery } from '@/entities/ticket/api/getRoutes.js';
 
 export const useTickets = () => {
-  const { search, pathname } = useLocation();
+  const { search } = useLocation();
   const navigate = useNavigate();
 
   const params = useMemo(() => {

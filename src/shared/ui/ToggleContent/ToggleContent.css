@@ -11,7 +11,7 @@
 }
 
 .toggle-content__button--visible {
-    --toggle-icon-color: #c4c4c4
+    --toggle-icon-color: var(--gray-color-3)
 }
 
 .toggle-content__button:hover {

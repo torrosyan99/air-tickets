@@ -5,7 +5,7 @@ import LuxurySvg from '@icons/luxury-2.svg?react';
 import {useMemo} from "react";
 import {cn} from "@/shared/utils/cn/cn.js";
 import {useSelector} from "react-redux";
-import {seatsSelector} from "@/entities/train/model/selectors.jsx";
+import {seatsSelector} from "@/entities/ticket/model/selectors.jsx";
 
 const WAGON_TYPES = [
   {key: 'fourth', label: 'Сидячий', icon: SitingSvg},

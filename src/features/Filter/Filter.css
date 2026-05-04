@@ -3,7 +3,6 @@
 }
 
 .filter__title {
-    font-size: 30px;
     margin-bottom: 6px;
 }
 
@@ -49,8 +48,7 @@
 }
 
 .filter__hours-title {
-    font-size: 24px;
-    color: #E5E5E5;
+    color: var(--gray-color);
     margin-bottom: 19px;
 }
 

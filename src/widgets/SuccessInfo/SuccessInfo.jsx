@@ -1,7 +1,7 @@
 import './SuccessInfo.css'
 import {Container} from "@/shared/ui/Container/Container.jsx";
 import {useSelector} from "react-redux";
-import {personalDataSelector, priceSelector} from "@/entities/train/model/selectors.jsx";
+import {personalDataSelector, priceSelector} from "@/entities/ticket/model/selectors.jsx";
 import RubSvg from '@icons/rub.svg?react'
 import SuccessItemSvg from '@icons/success-item-1.svg?react'
 import SuccessItem2Svg from '@icons/success-item-2.svg?react'

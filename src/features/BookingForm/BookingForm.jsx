@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { BookingDate } from '@/features/BookingForm/BookingDate.jsx';
 import { BookingRoutes } from '@/features/BookingForm/BookingRoutes.jsx';
-import { useBookingSubmit } from '@/shared/hooks/useBookingSubmit/useBookingSubmit.jsx';
+import { useBookingSubmit } from '@/features/BookingForm/hooks/useBookingSubmit.jsx';
 import { Button } from '@/shared/ui/Button/Button.jsx';
 import { cn } from '@/shared/utils/cn/cn.js';
 

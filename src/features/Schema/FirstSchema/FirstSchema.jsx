@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import firstSchema from "@/shared/assets/images/schema.svg";
 import "./FirstSchema.css";
 import { SchemaName } from "../SchemaName.jsx";
+import {cn} from "@/shared/utils/cn/cn.js";
 
 export const FirstSchema = ({
                               wagon,
@@ -25,7 +26,7 @@ export const FirstSchema = ({
 
   const priceTooltip = useMemo(() => {
     const prices = [top_price, bottom_price, side_price].filter(
-      (p) => typeof p === "number"
+      (p) => typeof p === "number" && p !== 0
     );
 
     const base = prices.length ? Math.min(...prices) : 0;
@@ -117,9 +118,11 @@ export const FirstSchema = ({
         {currentSeats.map((seat) => (
           <li
             key={seat.index}
-            className={`first-schema__seat first-schema__seat_${seat.index}
-              ${seat.available ? " first-schema__seat_available" : ""}
-              ${seat.isActive ? " first-schema__seat_active" : ""}`}
+            className={cn(`first-schema__seat first-schema__seat_${seat.index}`,
+              [], {
+                'first-schema__seat_available': seat.available,
+                'first-schema__seat_active': seat.isActive,
+              })}
             onClick={(e) => handleSeatClick(seat, e)}
           >
             {seat.index}

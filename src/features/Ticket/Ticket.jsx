@@ -1,74 +1,78 @@
-import {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+
 import {Button} from '@/shared/ui/Button/Button.jsx';
 import {TicketRoute} from "./TicketRoute.jsx";
-import {useTickets} from "@/shared/hooks/useTickets/useTickets.jsx";
-import {getSeats} from "@/entities/train/thunks/getSeats.js";
-import {activeSeatsSelector, seatsSelector} from "@/entities/train/model/selectors.jsx";
-import {PagePaths} from "@/shared/configs/routerConfig/routerConfig.jsx";
-import {useNavigate} from "react-router-dom";
+import {LoadingForSection} from "@/shared/ui/Loading/LoadingForSection.jsx";
+import {Title} from "@/shared/ui/Title/Title.jsx";
+import {useTicketSelection} from "./hooks/useTicketSelection.jsx";
 
 import './Ticket.css';
-import {ticketActions} from "@/entities/train/model/ticketSlice.js";
+
 
 export const Ticket = ({id}) => {
-  const navigate = useNavigate()
-  const dispatch = useDispatch();
-  const seats = useSelector(((state) => seatsSelector(state, 'departure')));
-  const activeSeats = useSelector(((state) => activeSeatsSelector(state, 'departure')));
-  const activeArrivalSeats = useSelector(((state) => activeSeatsSelector(state, 'arrival')));
-  const {data} = useTickets();
-  const activeTicket = data?.items.find(ticket => ticket.departure._id === id);
-  const [passengers, setPassengers] = useState({
-    old: 0,
-    children: 0,
-    children_without_place: 0
-  });
-  const [arrivalPassengers, setArrivalPassengers] = useState({
-    old: 0,
-    children: 0,
-    children_without_place: 0
-  });
+  const {
+    data,
+    seats,
+    activeTicket,
+    passengers,
+    setPassengers,
+    arrivalPassengers,
+    setArrivalPassengers,
+    disabled,
+    handleClick
+  } = useTicketSelection(id);
 
-  const isDepartureValid =
-    passengers.old + passengers.children > 0 &&
-    passengers.old + passengers.children === activeSeats?.length;
+  if (!data) {
+    return (
+      <section className="ticket">
+        <LoadingForSection/>
+      </section>
+    );
+  }
 
-  const isArrivalValid =
-    !activeTicket?.arrival
-      ? true
-      : arrivalPassengers.old + arrivalPassengers.children > 0 &&
-      arrivalPassengers.old + arrivalPassengers.children === activeArrivalSeats?.length;
-
-  const disabled = !(isDepartureValid && isArrivalValid);
-  useEffect(() => {
-    if(activeTicket)
-    dispatch(getSeats({id, ticket:activeTicket}));
-  }, [activeTicket]);
-
-
-  const handleClick = () => {
-    dispatch(ticketActions.saveRouteId(id))
-    navigate(PagePaths.PASSENGERS)
+  if (!activeTicket) {
+    return (
+      <section className="ticket">
+        <Title>Билет не найден</Title>
+      </section>
+    );
   }
 
   return (
     <section className="ticket">
-      {seats.length > 0 && <> <h3 className={'ticket__title'}>Выбор мест</h3>
-        <TicketRoute
-          passengers={passengers}
-          setPassengers={setPassengers}
-          activeTicket={activeTicket?.departure}
-          id={id}/>
-        {activeTicket?.arrival && <TicketRoute
-          passengers={arrivalPassengers}
-          setPassengers={setArrivalPassengers}
-          arrival
-          activeTicket={activeTicket.arrival}
-          id={id}/>}
-        <Button className={'ticket__button'} disabled={disabled} onClick={handleClick} >
-          Найти
-        </Button></>}
+      {seats?.length > 0 && (
+        <>
+          <Title className="ticket__title" variant="medium">
+            Выбор мест
+          </Title>
+
+          <TicketRoute
+            passengers={passengers}
+            setPassengers={setPassengers}
+            activeTicket={activeTicket.departure}
+            id={id}
+          />
+
+          {activeTicket.arrival && (
+            <TicketRoute
+              passengers={arrivalPassengers}
+              setPassengers={setArrivalPassengers}
+              arrival
+              activeTicket={activeTicket.arrival}
+              id={id}
+            />
+          )}
+
+          <Button
+            className="ticket__button"
+            disabled={disabled}
+            onClick={handleClick}
+            color="white"
+            size={'lg'}
+          >
+            Далее
+          </Button>
+        </>
+      )}
     </section>
   );
 };
