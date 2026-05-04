@@ -100,7 +100,6 @@ export const FourthSchema = ({
       <ul className="fourth-schema__scheme">
         {currentSeats.map((seat) => (
           <li
-            c={console.log(seat)}
             key={seat.index}
             className={cn(
               `fourth-schema__seat fourth-schema__seat_${seat.index}`,
