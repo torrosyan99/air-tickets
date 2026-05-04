@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://torrosyan99.github.io/train-tickets/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
