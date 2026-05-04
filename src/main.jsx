@@ -8,7 +8,7 @@ import { ReduxProvider } from '@/app/providers/ReduxProvider/ReduxProvider.jsx';
 createRoot(document.getElementById('root')).render(
   <ReduxProvider>
     <QueryProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={'/train-tickets'}>
         <App/>
       </BrowserRouter>
     </QueryProvider>
