@@ -1,14 +1,13 @@
-import {useMemo, useCallback} from "react";
-import {useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {  useCallback } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import {
   activeSeatsSelector,
   personalDataSelector,
   ticketSelector,
-} from "@/entities/ticket/model/selectors.jsx";
-
-import {PagePaths} from "@/shared/configs/routerConfig/routerConfig.jsx";
+} from '@/entities/ticket/model/selectors.jsx';
+import { PagePaths } from '@/shared/configs/routerConfig/routerConfig.jsx';
 
 export const useResult = () => {
   const navigate = useNavigate();
@@ -36,10 +35,10 @@ export const useResult = () => {
     };
 
     const res = await fetch(
-      "https://students.netoservices.ru/fe-diplom/order",
+      'https://students.netoservices.ru/fe-diplom/order',
       {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       }
     );
@@ -47,7 +46,7 @@ export const useResult = () => {
     const data = await res.json();
 
     if (data.status) navigate(PagePaths.SUCCESS);
-  }, []);
+  }, [personalData, departureSeats, arrivalSeats, navigate, ticket]);
 
   return {
     ticket,

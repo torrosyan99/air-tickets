@@ -1,7 +1,9 @@
-import { cn } from "@/shared/utils/cn/cn.js";
-import { SimpleSelect } from "@/shared/ui/SimpleSelect/SimpleSelect.jsx";
-import { Input } from "@/shared/ui/Input/Input.jsx";
-import { Controller } from "react-hook-form";
+import { Controller } from 'react-hook-form';
+
+import { Input } from '@/shared/ui/Input/Input.jsx';
+import { SimpleSelect } from '@/shared/ui/SimpleSelect/SimpleSelect.jsx';
+import { cn } from '@/shared/utils/cn/cn.js';
+
 
 export const PassengerDocument = ({
                                     errors,
@@ -20,8 +22,8 @@ export const PassengerDocument = ({
 
       {/* TYPE */}
       <div
-        className={cn("passenger-form__item", [], {
-          "passenger-form__select-full": docType !== "паспорт",
+        className={cn('passenger-form__item', [], {
+          'passenger-form__select-full': docType !== 'паспорт',
         })}
       >
         <label className="passenger-form__label">
@@ -36,8 +38,8 @@ export const PassengerDocument = ({
             <SimpleSelect
               value={field.value}
               options={[
-                "паспорт",
-                "свидетельство о рождении",
+                'паспорт',
+                'свидетельство о рождении',
               ]}
               onChange={(val) => {
                 field.onChange(val);
@@ -53,13 +55,13 @@ export const PassengerDocument = ({
       </div>
 
       {/* PASSPORT */}
-      {docType === "паспорт" ? (
+      {docType === 'паспорт' ? (
         <>
           <Controller
             control={control}
             name={`passengers.${index}.document_series`}
             rules={{
-              required: "Введите серию",
+              required: 'Введите серию',
               minLength: {
                 value: 4,
                 message: 'Серия должен содержать 4 цифр'
@@ -77,7 +79,7 @@ export const PassengerDocument = ({
                   placeholder="0 0 0 0"
                   max={4}
                   onlyNumber
-                  errorBorder={!!getError("document_series")}
+                  errorBorder={!!getError('document_series')}
                 />
               </div>
             )}
@@ -87,7 +89,7 @@ export const PassengerDocument = ({
             control={control}
             name={`passengers.${index}.document_number`}
             rules={{
-              required: "Введите номер",
+              required: 'Введите номер',
               minLength: {
                 value: 6,
                 message: 'Номер должен содержать 6 цифр'
@@ -105,7 +107,7 @@ export const PassengerDocument = ({
                   placeholder="0 0 0 0 0 0"
                   max={6}
                   onlyNumber
-                  errorBorder={!!getError("document_number")}
+                  errorBorder={!!getError('document_number')}
                 />
 
               </div>
@@ -117,10 +119,10 @@ export const PassengerDocument = ({
           control={control}
           name={`passengers.${index}.document_data`}
           rules={{
-            required: "Введите номер документа",
+            required: 'Введите номер документа',
             pattern: {
               value: /^[IVX]+-[А-ЯЁ]{2}-\d{6}$/,
-              message: "Формат: VIII-ЫП-123456",
+              message: 'Формат: VIII-ЫП-123456',
             },
           }}
           render={({ field, fieldState }) => (

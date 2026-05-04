@@ -1,10 +1,10 @@
-import {Checkbox} from "@/shared/ui/Checkbox/Checkbox.jsx";
+import { Checkbox } from '@/shared/ui/Checkbox/Checkbox.jsx';
 
-export const PaymentType = ({watch, setValue}) => {
-  const paymentType = watch("paymentType");
+export const PaymentType = ({ watch, setValue }) => {
+  const paymentType = watch('paymentType');
 
   const checkBoxClick = (type) => {
-    setValue("paymentType", type, {
+    setValue('paymentType', type, {
       shouldValidate: true,
       shouldDirty: true,
     });
@@ -19,8 +19,8 @@ export const PaymentType = ({watch, setValue}) => {
       <div className={'payment__online'}>
         <Checkbox
           label="Онлайн"
-          checked={paymentType === "online"}
-          onClick={() => checkBoxClick("online")}
+          checked={paymentType === 'online'}
+          onClick={() => checkBoxClick('online')}
         />
 
         <div className={'payment__variants'}>
@@ -33,8 +33,8 @@ export const PaymentType = ({watch, setValue}) => {
       <div className={'payment__cash'}>
         <Checkbox
           label="Наличными"
-          checked={paymentType === "cash"}
-          onClick={() => checkBoxClick("cash")}
+          checked={paymentType === 'cash'}
+          onClick={() => checkBoxClick('cash')}
         />
       </div>
 

@@ -1,4 +1,4 @@
-import {Payment} from "@/features/Payment/Payment.jsx";
+import { Payment } from '@/features/Payment/Payment.jsx';
 
 export const PaymentPage = () => {
   return (

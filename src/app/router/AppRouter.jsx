@@ -1,8 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 
 import { Layout } from '@/pages/Layouts/Layout.jsx';
-import { routerConfig } from '@/shared/configs/routerConfig/routerConfig.jsx';
 import { BookingTop } from '@/widgets/BookingTop/BookingTop.jsx';
+
+import { routerConfig } from '@/shared/configs/routerConfig/routerConfig.jsx';
 
 
 export const AppRouter = () => {

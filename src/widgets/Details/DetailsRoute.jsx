@@ -1,6 +1,6 @@
-import { ToggleContent } from "@/shared/ui/ToggleContent/ToggleContent.jsx";
-import { formateHours } from "@/shared/utils/formateHours/formateHours.js";
-import {Title} from "@/shared/ui/Title/Title.jsx";
+import { Title } from '@/shared/ui/Title/Title.jsx';
+import { ToggleContent } from '@/shared/ui/ToggleContent/ToggleContent.jsx';
+import { formateHours } from '@/shared/utils/formateHours/formateHours.js';
 
 export const DetailsRoute = ({
                                route,

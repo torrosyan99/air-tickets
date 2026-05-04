@@ -1,23 +1,24 @@
-import { useEffect, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import RubSvg from '@icons/rub.svg?react';
+import ArrowLeftSvg from '@icons/ticket-arrow-left-2.svg?react';
+import ArrowRightSvg from '@icons/ticket-arrow-right-2.svg?react';
+import { useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { Button } from "@/shared/ui/Button/Button.jsx";
-import { cn } from "@/shared/utils/cn/cn.js";
+import { TicketCounts } from './TicketCounts/TicketCounts.jsx';
+import { TicketInfo } from './TicketInfo.jsx';
+import { TicketWagon } from './TicketWagon/TicketWagon.jsx';
 
-import ArrowRightSvg from "@icons/ticket-arrow-right-2.svg?react";
-import ArrowLeftSvg from "@icons/ticket-arrow-left-2.svg?react";
-import RubSvg from "@icons/rub.svg?react";
-
-import { useTickets } from "@/shared/hooks/useTickets/useTickets.jsx";
 import {
   activeSeatsSelector,
   priceSelector,
-} from "@/entities/ticket/model/selectors.jsx";
-import { ticketActions } from "@/entities/ticket/model/ticketSlice.js";
+} from '@/entities/ticket/model/selectors.jsx';
+import { ticketActions } from '@/entities/ticket/model/ticketSlice.js';
+import { useTickets } from '@/shared/hooks/useTickets/useTickets.jsx';
+import { Button } from '@/shared/ui/Button/Button.jsx';
+import { cn } from '@/shared/utils/cn/cn.js';
 
-import { TicketInfo } from "./TicketInfo.jsx";
-import { TicketCounts } from "./TicketCounts/TicketCounts.jsx";
-import { TicketWagon } from "./TicketWagon/TicketWagon.jsx";
+
+
 
 export const TicketRoute = ({
                               activeTicket,
@@ -30,7 +31,7 @@ export const TicketRoute = ({
   const activeSeats = useSelector(activeSeatsSelector);
 
   const price = useSelector((state) =>
-    priceSelector(state, arrival ? "arrival" : "departure")
+    priceSelector(state, arrival ? 'arrival' : 'departure')
   );
 
   const { searchTicketsWithParams, params } = useTickets();
@@ -49,8 +50,8 @@ export const TicketRoute = ({
 
   return (
     <div
-      className={cn("ticket__route", [], {
-        "ticket__route--arrival": arrival,
+      className={cn('ticket__route', [], {
+        'ticket__route--arrival': arrival,
       })}
     >
       <div className="ticket__top">

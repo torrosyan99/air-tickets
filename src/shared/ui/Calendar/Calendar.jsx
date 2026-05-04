@@ -1,11 +1,11 @@
+import CalendarNextSvg from '@icons/calendar-next.svg?react';
+import CalendarPrevSvg from '@icons/calendar-prev.svg?react';
+import CalendarSvg from '@icons/calendar.svg?react'
 import { forwardRef } from 'react';
 import DatePicker from 'react-datepicker';
 
 import { cn } from '@/shared/utils/cn/cn.js';
 
-import CalendarNextSvg from '@icons/calendar-next.svg?react';
-import CalendarPrevSvg from '@icons/calendar-prev.svg?react';
-import CalendarSvg from '@icons/calendar.svg?react'
 
 
 import './Calendar.css';

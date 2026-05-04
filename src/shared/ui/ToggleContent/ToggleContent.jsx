@@ -1,10 +1,10 @@
 import './ToggleContent.css'
+import ToggleCloseButtonSvg from '@icons/toggle-close.svg?react'
+import ToggleButtonSvg from '@icons/toggle.svg?react'
 import { useState } from 'react';
 
 import { cn } from '@/shared/utils/cn/cn.js';
 
-import ToggleCloseButtonSvg from '@icons/toggle-close.svg?react'
-import ToggleButtonSvg from '@icons/toggle.svg?react'
 
 export const ToggleContent = ({ icon:Icon, title, children }) => {
 const [isVisible, setIsVisible] = useState(false);

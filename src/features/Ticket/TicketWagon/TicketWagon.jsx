@@ -1,14 +1,16 @@
-import {useState} from "react";
-import {TicketWagonInfo} from "./TicketWagonInfo.jsx";
-import {seatsSelector} from "@/entities/ticket/model/selectors.jsx";
-import {useSelector} from "react-redux";
-import {TicketTypes} from "./TicketTypes.jsx";
-import {TicketWagonsNames} from "./TicketWagonsNames.jsx";
-import {TicketSchema} from "../TicketSchema/TicketSchema.jsx";
-import {Title} from "@/shared/ui/Title/Title.jsx";
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import { TicketTypes } from './TicketTypes.jsx';
+import { TicketWagonInfo } from './TicketWagonInfo.jsx';
+import { TicketWagonsNames } from './TicketWagonsNames.jsx';
+import { TicketSchema } from '../TicketSchema/TicketSchema.jsx';
+
+import { seatsSelector } from '@/entities/ticket/model/selectors.jsx';
+import { Title } from '@/shared/ui/Title/Title.jsx';
 
 
-export const TicketWagon = ({passengers, arrival}) => {
+export const TicketWagon = ({ passengers, arrival }) => {
   const seats = useSelector((state) => seatsSelector(state, arrival && 'arrival'));
 
   const [activeType, setActiveType] = useState('');
@@ -29,7 +31,7 @@ export const TicketWagon = ({passengers, arrival}) => {
           <TicketWagonsNames setActiveWagons={setActiveWagons} activeWagons={activeWagons} activeType={activeType}/>
 
           {
-            seats.filter(({coach}) => activeWagons.includes(coach.name)).map((wagon) =>
+            seats.filter(({ coach }) => activeWagons.includes(coach.name)).map((wagon) =>
               <>
                 <TicketWagonInfo wagon={wagon} arrival={arrival}/>
                 <TicketSchema wagon={wagon} type={activeType} passengers={passengers} arrival={arrival}/>

@@ -1,15 +1,17 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { seatsSelector } from '@/entities/ticket/model/selectors.jsx';
+import { ticketActions } from '@/entities/ticket/model/ticketSlice.js';
+import { TicketCard } from '@/entities/ticket/TicketCard/TicketCard.jsx';
 import { TicketsPagination } from '@/features/TicketsPagination/TicketsPagination.jsx';
 import { TicketsSort } from '@/features/TicketsSort/TicketsSort.jsx';
 import { useTickets } from '@/shared/hooks/useTickets/useTickets.jsx';
-import { TicketCard } from "@/entities/ticket/TicketCard/TicketCard.jsx";
-import { Title } from "@/shared/ui/Title/Title.jsx";
-import {LoadingForSection} from "@/shared/ui/Loading/LoadingForSection.jsx";
+import { LoadingForSection } from '@/shared/ui/Loading/LoadingForSection.jsx';
+import { Title } from '@/shared/ui/Title/Title.jsx';
 
 import './Tickets.css';
-import {useDispatch, useSelector} from "react-redux";
-import {seatsSelector} from "@/entities/ticket/model/selectors.jsx";
-import {useEffect} from "react";
-import {ticketActions} from "@/entities/ticket/model/ticketSlice.js";
+
 
 export const Tickets = () => {
   const { data } = useTickets();
@@ -20,7 +22,7 @@ const dispatch = useDispatch();
     if(seats.length > 0){
       dispatch(ticketActions.resetAll())
     }
-  }, []);
+  }, [dispatch, seats.length]);
 
   if (!data) {
     return (

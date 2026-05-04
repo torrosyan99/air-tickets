@@ -1,13 +1,15 @@
 import './Payment.css';
-import {Button} from "@/shared/ui/Button/Button.jsx";
-import {useForm} from "react-hook-form";
-import {useDispatch, useSelector} from "react-redux";
-import {ticketActions} from "@/entities/ticket/model/ticketSlice.js";
-import {Navigate, useNavigate} from "react-router-dom";
-import {PagePaths} from "@/shared/configs/routerConfig/routerConfig.jsx";
-import {PaymentPersonalData} from "./PaymentPersonalData.jsx";
-import {PaymentType} from './PaymentType.jsx'
-import {activeSeatsSelector, personalDataSelector} from "@/entities/ticket/model/selectors.jsx";
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate, useNavigate } from 'react-router-dom';
+
+import { PaymentPersonalData } from './PaymentPersonalData.jsx';
+import { PaymentType } from './PaymentType.jsx'
+
+import { activeSeatsSelector, personalDataSelector } from '@/entities/ticket/model/selectors.jsx';
+import { ticketActions } from '@/entities/ticket/model/ticketSlice.js';
+import { PagePaths } from '@/shared/configs/routerConfig/routerConfig.jsx';
+import { Button } from '@/shared/ui/Button/Button.jsx';
 
 export const Payment = () => {
   const departureActiveSeats = useSelector(activeSeatsSelector) || [];
@@ -20,16 +22,16 @@ const personData = useSelector(personalDataSelector)
     register,
     handleSubmit,
     watch,
-    formState: {isValid},
+    formState: { isValid },
   } = useForm({
-    mode: "onChange",
+    mode: 'onChange',
     defaultValues: {
-      firstName:personData.first_name||  "",
-      lastName: personData.last_name || "",
-      patronymic: personData.patronymic || "",
-      phone: personData.phone || "+7",
-      email: personData.email || "",
-      paymentType: personData.payment_method || "online",
+      firstName:personData.first_name||  '',
+      lastName: personData.last_name || '',
+      patronymic: personData.patronymic || '',
+      phone: personData.phone || '+7',
+      email: personData.email || '',
+      paymentType: personData.payment_method || 'online',
     },
   });
 

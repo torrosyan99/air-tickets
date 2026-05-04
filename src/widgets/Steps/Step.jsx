@@ -1,6 +1,7 @@
+import StepSvg from '@icons/step-icon.svg?react'
+
 import { cn } from '@/shared/utils/cn/cn.js';
 
-import StepSvg from '@icons/step-icon.svg?react'
 
 export const Step = ({ active, last, children }) => {
   return (

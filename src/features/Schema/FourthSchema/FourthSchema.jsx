@@ -1,14 +1,17 @@
-import { useEffect, useRef, useState, useMemo } from "react";
-import fourthSchema from '@/shared/assets/images/fourth-schema.svg';
-import { SchemaName } from "../SchemaName.jsx";
+import { useEffect, useRef, useState, useMemo } from 'react';
 
+
+import { SchemaName } from '../SchemaName.jsx';
+
+import fourthSchema from '@/shared/assets/images/fourth-schema.svg';
+import { cn } from '@/shared/utils/cn/cn.js';
 import './ForuthSchema.css';
-import {cn} from "@/shared/utils/cn/cn.js";
+
 
 export const FourthSchema = ({
                                wagon,
                                onSeatClick,
-                               selectionMode = "direct", // "dropdown" | "direct"
+                               selectionMode = 'direct',
                              }) => {
   const [activeSeat, setActiveSeat] = useState(null);
   const containerRef = useRef(null);
@@ -27,7 +30,7 @@ export const FourthSchema = ({
 
   const priceTooltip = useMemo(() => {
     const prices = [top_price, bottom_price, side_price].filter(
-      (p) => typeof p === "number" && p !== 0
+      (p) => typeof p === 'number' && p !== 0
     );
 
     const base = prices.length ? Math.min(...prices) : 0;
@@ -40,6 +43,7 @@ export const FourthSchema = ({
   }, [
     top_price,
     bottom_price,
+    side_price,
     have_wifi,
     wifi_price,
     is_linens_included,
@@ -56,19 +60,19 @@ export const FourthSchema = ({
     if (!seat.available) return;
 
     if (seat.isActive) {
-      onSeatClick(seat.index, priceTooltip, "adult", true);
+      onSeatClick(seat.index, priceTooltip, 'adult', true);
       return;
     }
 
-    if (selectionMode === "direct") {
-      onSeatClick(seat.index, priceTooltip, "adult", false);
+    if (selectionMode === 'direct') {
+      onSeatClick(seat.index, priceTooltip, 'adult', false);
       return;
     }
 
     setActiveSeat((prev) => (prev === seat.index ? null : seat.index));
   };
 
-
+  // закрытие по клику вне компонента
   useEffect(() => {
     const handlePointerDown = (e) => {
       if (!containerRef.current) return;
@@ -78,18 +82,14 @@ export const FourthSchema = ({
       }
     };
 
-    document.addEventListener("pointerdown", handlePointerDown, true);
+    document.addEventListener('pointerdown', handlePointerDown, true);
 
     return () => {
-      document.removeEventListener("pointerdown", handlePointerDown, true);
+      document.removeEventListener('pointerdown', handlePointerDown, true);
     };
   }, []);
 
-  useEffect(() => {
-    if (activeSeatData?.isActive) {
-      setActiveSeat(null);
-    }
-  }, [activeSeatData]);
+
 
   return (
     <div className="fourth-schema" ref={containerRef}>
@@ -101,17 +101,19 @@ export const FourthSchema = ({
         {currentSeats.map((seat) => (
           <li
             key={seat.index}
-            className={cn(`fourth-schema__seat fourth-schema__seat_${seat.index}`,
-              [], {
+            className={cn(
+              `fourth-schema__seat fourth-schema__seat_${seat.index}`,
+              [],
+              {
                 'fourth-schema__seat_available': seat.available,
                 'fourth-schema__seat_active': seat.isActive,
-              })}
+              }
+            )}
             onClick={(e) => handleSeatClick(seat, e)}
           >
             {seat.index}
 
-            {/* dropdown */}
-            {selectionMode === "dropdown" &&
+            {selectionMode === 'dropdown' &&
               activeSeatData?.index === seat.index &&
               activeSeatData?.available && (
                 <div className="seat-dropdown">
@@ -121,7 +123,7 @@ export const FourthSchema = ({
                       onSeatClick(
                         activeSeatData.index,
                         priceTooltip,
-                        "adult",
+                        'adult',
                         false
                       );
                       setActiveSeat(null);
@@ -136,7 +138,7 @@ export const FourthSchema = ({
                       onSeatClick(
                         activeSeatData.index,
                         priceTooltip,
-                        "child",
+                        'child',
                         false
                       );
                       setActiveSeat(null);

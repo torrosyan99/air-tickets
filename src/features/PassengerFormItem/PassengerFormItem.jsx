@@ -1,19 +1,19 @@
 import './PassengerFormItem.css';
-import { useState } from "react";
-import { Controller } from "react-hook-form";
+import { useState } from 'react';
+import { Controller } from 'react-hook-form';
 
 
-import { PassengerName } from "./PassengerName.jsx";
-import { PassengerGender } from "@/features/PassengerFormItem/PassengerGender.jsx";
-import { PassengerBirthday } from "@/features/PassengerFormItem/PassengerBirthday.jsx";
-import { PassengerDocument } from "@/features/PassengerFormItem/PassengerDocument.jsx";
-import { PassengerFormTop } from "./PassengerFormTop.jsx";
+import { PassengerFormBottom } from './PassengerFormBottom.jsx';
+import { PassengerFormTop } from './PassengerFormTop.jsx';
+import { PassengerName } from './PassengerName.jsx';
 
-import { SimpleSelect } from "@/shared/ui/SimpleSelect/SimpleSelect.jsx";
-import { Checkbox } from "@/shared/ui/Checkbox/Checkbox.jsx";
-import { cn } from "@/shared/utils/cn/cn.js";
+import { PassengerBirthday } from '@/features/PassengerFormItem/PassengerBirthday.jsx';
+import { PassengerDocument } from '@/features/PassengerFormItem/PassengerDocument.jsx';
+import { PassengerGender } from '@/features/PassengerFormItem/PassengerGender.jsx';
+import { Checkbox } from '@/shared/ui/Checkbox/Checkbox.jsx';
+import { SimpleSelect } from '@/shared/ui/SimpleSelect/SimpleSelect.jsx';
+import { cn } from '@/shared/utils/cn/cn.js';
 
-import {PassengerFormBottom} from "./PassengerFormBottom.jsx";
 
 export const PassengerFormItem = ({
                                     filed,
@@ -33,7 +33,7 @@ export const PassengerFormItem = ({
 
 
   return (
-    <div className={cn("passenger-form", [], {
+    <div className={cn('passenger-form', [], {
       'passenger-form--closed': !isOpen,
     })}>
 
@@ -61,7 +61,7 @@ export const PassengerFormItem = ({
                 className="passenger-form__select"
                 buttonClass="passenger-form__select-button"
                 value={field.value}
-                options={['Взрослый', "Детский"]}
+                options={['Взрослый', 'Детский']}
                 onChange={field.onChange}
               />
             )}

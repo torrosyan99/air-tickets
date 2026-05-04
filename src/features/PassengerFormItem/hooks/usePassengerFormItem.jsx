@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useWatch } from "react-hook-form";
-import { ticketActions } from "@/entities/ticket/model/ticketSlice.js";
+import { useEffect, useRef, useState } from 'react';
+import { useWatch } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+
+import { ticketActions } from '@/entities/ticket/model/ticketSlice.js';
 
 const getFirstErrorMessage = (errors) => {
   if (!errors) return null;
@@ -9,7 +10,7 @@ const getFirstErrorMessage = (errors) => {
   for (const key in errors) {
     if (errors[key]?.message) return errors[key].message;
 
-    if (typeof errors[key] === "object") {
+    if (typeof errors[key] === 'object') {
       const nested = getFirstErrorMessage(errors[key]);
       if (nested) return nested;
     }

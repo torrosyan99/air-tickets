@@ -1,14 +1,15 @@
 import './SuccessInfo.css'
-import {Container} from "@/shared/ui/Container/Container.jsx";
-import {useSelector} from "react-redux";
-import {personalDataSelector, priceSelector} from "@/entities/ticket/model/selectors.jsx";
 import RubSvg from '@icons/rub.svg?react'
+import StarsSvg from '@icons/stars.svg?react'
 import SuccessItemSvg from '@icons/success-item-1.svg?react'
 import SuccessItem2Svg from '@icons/success-item-2.svg?react'
 import SuccessItem3Svg from '@icons/success-item-3.svg?react'
-import StarsSvg from "@icons/stars.svg?react"
-import {Button} from "@/shared/ui/Button/Button.jsx";
-import {PagePaths} from "@/shared/configs/routerConfig/routerConfig.jsx";
+import { useSelector } from 'react-redux';
+
+import { personalDataSelector, priceSelector } from '@/entities/ticket/model/selectors.jsx';
+import { PagePaths } from '@/shared/configs/routerConfig/routerConfig.jsx';
+import { Button } from '@/shared/ui/Button/Button.jsx';
+import { Container } from '@/shared/ui/Container/Container.jsx';
 
 export const SuccessInfo = () => {
   const price = useSelector(priceSelector);

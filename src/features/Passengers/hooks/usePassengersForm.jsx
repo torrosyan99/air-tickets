@@ -1,11 +1,11 @@
-import { useMemo } from "react";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useForm, useFieldArray } from "react-hook-form";
+import { useMemo } from 'react';
+import { useForm, useFieldArray } from 'react-hook-form';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-import { activeSeatsSelector } from "@/entities/ticket/model/selectors.jsx";
-import { ticketActions } from "@/entities/ticket/model/ticketSlice.js";
-import { PagePaths } from "@/shared/configs/routerConfig/routerConfig.jsx";
+import { activeSeatsSelector } from '@/entities/ticket/model/selectors.jsx';
+import { ticketActions } from '@/entities/ticket/model/ticketSlice.js';
+import { PagePaths } from '@/shared/configs/routerConfig/routerConfig.jsx';
 
 export const usePassengersForm = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export const usePassengersForm = () => {
 
   const departureSeats = useSelector(activeSeatsSelector, shallowEqual) || [];
   const arrivalSeats = useSelector(
-    (state) => activeSeatsSelector(state, "arrival"),
+    (state) => activeSeatsSelector(state, 'arrival'),
     shallowEqual
   ) || [];
 
@@ -25,29 +25,29 @@ export const usePassengersForm = () => {
   const defaultPassengers = useMemo(
     () =>
       seats.map((seat) => {
-        const [series = "", number = ""] =
-        seat.person_info.document_data?.split(" ") || [];
+        const [series = '', number = ''] =
+        seat.person_info.document_data?.split(' ') || [];
 
         return {
           coach_id: seat.coach_id,
-          firstName: seat.person_info?.first_name || "",
-          lastName: seat.person_info?.last_name || "",
-          patronymic: seat.person_info?.patronymic || "",
-          birthday: seat.person_info?.birthday || "",
+          firstName: seat.person_info?.first_name || '',
+          lastName: seat.person_info?.last_name || '',
+          patronymic: seat.person_info?.patronymic || '',
+          birthday: seat.person_info?.birthday || '',
           seat_number: seat.seat_number,
           direction: seat.direction,
-          type: seat.is_child ? "Детский" : "Взрослый",
+          type: seat.is_child ? 'Детский' : 'Взрослый',
           gender: true,
           document_type: seat.person_info.document_type,
           document_series: series,
           document_number: number,
-          document_data: seat.person_info.document_data || "",
+          document_data: seat.person_info.document_data || '',
         };
       }),
     [seats]
   );
   const form = useForm({
-    mode: "onChange",
+    mode: 'onChange',
     defaultValues: {
       passengers: defaultPassengers
     }
@@ -55,7 +55,7 @@ export const usePassengersForm = () => {
 
   const fieldArray = useFieldArray({
     control: form.control,
-    name: "passengers"
+    name: 'passengers'
   });
 
   const onSubmit = (data) => {

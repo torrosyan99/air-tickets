@@ -1,9 +1,10 @@
-import {Input} from "@/shared/ui/Input/Input.jsx";
-import {Controller} from "react-hook-form";
-import {formatPhone} from "@/features/Payment/utils/formatPhone.js";
-import {Title} from "@/shared/ui/Title/Title.jsx";
+import { Controller } from 'react-hook-form';
 
-export const PaymentPersonalData = ({register, control, }) => {
+import { formatPhone } from '@/features/Payment/utils/formatPhone.js';
+import { Input } from '@/shared/ui/Input/Input.jsx';
+import { Title } from '@/shared/ui/Title/Title.jsx';
+
+export const PaymentPersonalData = ({ register, control, }) => {
   return (
     <
     >
@@ -19,8 +20,8 @@ export const PaymentPersonalData = ({register, control, }) => {
             <label className={'payment__label'}>Фамилия</label>
             <Input
               variant="small"
-              {...register("lastName", {
-                required: "Введите фамилию",
+              {...register('lastName', {
+                required: 'Введите фамилию',
               })}
             />
           </div>
@@ -29,8 +30,8 @@ export const PaymentPersonalData = ({register, control, }) => {
             <label className={'payment__label'}>Имя</label>
             <Input
               variant="small"
-              {...register("firstName", {
-                required: "Введите имя",
+              {...register('firstName', {
+                required: 'Введите имя',
               })}
             />
           </div>
@@ -39,7 +40,7 @@ export const PaymentPersonalData = ({register, control, }) => {
             <label className={'payment__label'}>Отчество</label>
             <Input
               variant="small"
-              {...register("patronymic")}
+              {...register('patronymic')}
             />
           </div>
 
@@ -50,13 +51,13 @@ export const PaymentPersonalData = ({register, control, }) => {
           control={control}
           name="phone"
           rules={{
-            required: "Введите телефон",
+            required: 'Введите телефон',
             minLength: {
               value: 18,
-              message: "Введите полный номер",
+              message: 'Введите полный номер',
             },
           }}
-          render={({field, fieldState}) => (
+          render={({ field, fieldState }) => (
             <div className={'payment__item payment__contact'}>
               <label className={'payment__label'}>
                 Контактный телефон
@@ -65,7 +66,7 @@ export const PaymentPersonalData = ({register, control, }) => {
               <Input
                 variant="small"
                 placeholder="+7 (___) ___-__-__"
-                value={field.value || "+7"}
+                value={field.value || '+7'}
                 onChange={(e) => {
                   field.onChange(formatPhone(e.target.value));
                 }}
@@ -84,8 +85,8 @@ export const PaymentPersonalData = ({register, control, }) => {
           <Input
             variant="small"
             placeholder="inbox@gmail.ru"
-            {...register("email", {
-              required: "Введите email",
+            {...register('email', {
+              required: 'Введите email',
             })}
           />
         </div>

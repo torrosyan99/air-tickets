@@ -1,12 +1,13 @@
-import {useEffect} from "react";
+import { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 
-import {Sidebar} from "@/widgets/Sidebar/Sidebar.jsx";
-import {Steps} from "@/widgets/Steps/Steps.jsx";
-import {BookingTop} from "@/widgets/BookingTop/BookingTop.jsx";
+import { BookingTop } from '@/widgets/BookingTop/BookingTop.jsx';
+import { Details } from '@/widgets/Details/Details.jsx';
+import { Sidebar } from '@/widgets/Sidebar/Sidebar.jsx';
+import { Steps } from '@/widgets/Steps/Steps.jsx';
 
-import {Container} from "@/shared/ui/Container/Container.jsx"
-import {Outlet} from "react-router-dom";
-import {Details} from "@/widgets/Details/Details.jsx";
+import { Container } from '@/shared/ui/Container/Container.jsx'
+
 
 
 export const Layout = () => {

@@ -1,6 +1,7 @@
 import PolygonSvg from '@icons/polygon.svg?react';
 import RubSvg from '@icons/rub.svg?react';
-import {formatPrice} from "@/shared/utils/formatePrice/formatePrice.js";
+
+import { formatPrice } from '@/shared/utils/formatePrice/formatePrice.js';
 
 export const TicketCardSecond = ({ departure }) => {
   const secondClass = departure?.price_info?.second;

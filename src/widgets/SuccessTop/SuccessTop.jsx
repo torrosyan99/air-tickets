@@ -1,5 +1,5 @@
 import './SuccessTop.css'
-import {Container} from "@/shared/ui/Container/Container.jsx";
+import { Container } from '@/shared/ui/Container/Container.jsx';
 
 export const SuccessTop = () => {
   return (

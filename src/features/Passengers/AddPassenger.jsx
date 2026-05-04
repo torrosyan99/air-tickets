@@ -1,11 +1,13 @@
-import {ticketActions} from "@/entities/ticket/model/ticketSlice.js";
-import OrangePlusSvg from "@icons/orange-plus.svg?react";
-import {useDispatch, useSelector} from "react-redux";
-import {seatsSelector} from "@/entities/ticket/model/selectors.jsx";
-import {findEmptyPlace} from "./utiils/findEmptyPlace.js";
+import OrangePlusSvg from '@icons/orange-plus.svg?react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { findEmptyPlace } from './utiils/findEmptyPlace.js';
+
+import { seatsSelector } from '@/entities/ticket/model/selectors.jsx';
+import { ticketActions } from '@/entities/ticket/model/ticketSlice.js';
 
 
-export const AddPassenger = ({append}) => {
+export const AddPassenger = ({ append }) => {
   const dispatch = useDispatch();
   const seats = useSelector(seatsSelector)
 
@@ -18,7 +20,7 @@ export const AddPassenger = ({append}) => {
       firstName: '',
       lastName: '',
       patronymic: '',
-      birthday: "",
+      birthday: '',
       seat_number: placeInfo.index,
       direction: 'departure',
       type: 'Взрослый',

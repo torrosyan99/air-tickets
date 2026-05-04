@@ -1,6 +1,7 @@
 import ArrowRightSvg from '@icons/arrow-right.svg?react';
 import TrainSvg from '@icons/train.svg?react';
-import {Title} from "@/shared/ui/Title/Title.jsx";
+
+import { Title } from '@/shared/ui/Title/Title.jsx';
 
 export const TicketCardInfo = ({ departure }) => {
   return (<div className={'ticket-card__info'}>

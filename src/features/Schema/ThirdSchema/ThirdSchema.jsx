@@ -1,18 +1,21 @@
-import {useEffect, useRef, useState, useMemo} from "react";
-import thirdSchema from "@/shared/assets/images/third-schema.svg";
-import "./ThirdSchema.css";
-import {SchemaName} from "../SchemaName.jsx";
-import {cn} from "@/shared/utils/cn/cn.js";
+import { useEffect, useRef, useState, useMemo } from 'react';
+
+import { SchemaName } from '../SchemaName.jsx';
+
+import thirdSchema from '@/shared/assets/images/third-schema.svg';
+import './ThirdSchema.css';
+
+import { cn } from '@/shared/utils/cn/cn.js';
 
 export const ThirdSchema = ({
                               wagon,
                               onSeatClick,
-                              selectionMode = "direct",
+                              selectionMode = 'direct',
                             }) => {
   const [activeSeat, setActiveSeat] = useState(null);
   const containerRef = useRef(null);
 
-  const {coach, seats: currentSeats} = wagon;
+  const { coach, seats: currentSeats } = wagon;
 
   const {
     top_price,
@@ -26,7 +29,7 @@ export const ThirdSchema = ({
 
   const priceTooltip = useMemo(() => {
     const basePrices = [top_price, bottom_price, side_price].filter(
-      (p) => typeof p === "number" && p !== 0
+      (p) => typeof p === 'number' && p !== 0
     );
 
     const base = basePrices.length ? Math.min(...basePrices) : 0;
@@ -56,12 +59,12 @@ export const ThirdSchema = ({
     if (!seat.available) return;
 
     if (seat.isActive) {
-      onSeatClick(seat.index, priceTooltip, "adult", true);
+      onSeatClick(seat.index, priceTooltip, 'adult', true);
       return;
     }
 
-    if (selectionMode === "direct") {
-      onSeatClick(seat.index, priceTooltip, "adult", false);
+    if (selectionMode === 'direct') {
+      onSeatClick(seat.index, priceTooltip, 'adult', false);
       return;
     }
 
@@ -71,12 +74,7 @@ export const ThirdSchema = ({
   const handleSelect = (type) => {
     if (!activeSeatData) return;
 
-    onSeatClick(
-      activeSeatData.index,
-      priceTooltip,
-      type,
-      false
-    );
+    onSeatClick(activeSeatData.index, priceTooltip, type, false);
 
     setActiveSeat(null);
   };
@@ -90,16 +88,12 @@ export const ThirdSchema = ({
       }
     };
 
-    document.addEventListener("pointerdown", handlePointerDown, true);
-    return () =>
-      document.removeEventListener("pointerdown", handlePointerDown, true);
-  }, []);
+    document.addEventListener('pointerdown', handlePointerDown, true);
 
-  useEffect(() => {
-    if (activeSeatData?.isActive) {
-      setActiveSeat(null);
-    }
-  }, [activeSeatData]);
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown, true);
+    };
+  }, []);
 
   return (
     <div className="third-schema" ref={containerRef}>
@@ -109,30 +103,32 @@ export const ThirdSchema = ({
         alt="platzkart"
       />
 
-      <SchemaName name={coach.name}/>
+      <SchemaName name={coach.name} />
 
       <ul className="third-schema__schema">
         {currentSeats.map((seat) => (
           <li
             key={seat.index}
-            className={cn(`third-schema__seat third-schema__seat_${seat.index}`,
-              [], {
+            className={cn(
+              `third-schema__seat third-schema__seat_${seat.index}`,
+              [],
+              {
                 'third-schema__seat_available': seat.available,
                 'third-schema__seat_active': seat.isActive,
-              })
-            }
+              }
+            )}
             onClick={(e) => handleSeatClick(seat, e)}
           >
             {seat.index}
 
-            {selectionMode === "dropdown" &&
+            {selectionMode === 'dropdown' &&
               activeSeatData?.index === seat.index &&
               activeSeatData?.available && (
                 <div className="seat-dropdown">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleSelect("adult");
+                      handleSelect('adult');
                     }}
                   >
                     Взрослый
@@ -141,7 +137,7 @@ export const ThirdSchema = ({
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleSelect("child");
+                      handleSelect('child');
                     }}
                   >
                     Ребёнок

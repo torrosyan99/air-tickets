@@ -1,14 +1,15 @@
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
-import {Button} from "@/shared/ui/Button/Button.jsx";
+import { ResultPayment } from '@/widgets/Result/ResultPayment.jsx';
 
-import {useResult} from "./hooks/useResult";
-import {useSelector} from "react-redux";
-import {activeSeatsSelector} from "@/entities/ticket/model/selectors.jsx";
-import {Navigate} from "react-router-dom";
-import {PagePaths} from "@/shared/configs/routerConfig/routerConfig.jsx";
-import {ResultTicket} from "./ResultTicket.jsx";
-import {ResultPassengers} from "./ResultPassengers/ResultPassengers.jsx";
-import {ResultPayment} from "@/widgets/Result/ResultPayment.jsx";
+import { useResult } from './hooks/useResult';
+import { ResultPassengers } from './ResultPassengers/ResultPassengers.jsx';
+import { ResultTicket } from './ResultTicket.jsx';
+
+import { activeSeatsSelector } from '@/entities/ticket/model/selectors.jsx';
+import { PagePaths } from '@/shared/configs/routerConfig/routerConfig.jsx';
+import { Button } from '@/shared/ui/Button/Button.jsx';
 
 import './Result.css';
 

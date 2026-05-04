@@ -2,9 +2,9 @@ function capitalizeFirst(str) {
   return str.replace(/^\s*\p{L}/u, char => char.toUpperCase());
 }
 
-export const LocationList = ({items, focused, setValue}) => {
+export const LocationList = ({ items, focused, setValue }) => {
 
-  const onMouseDown = ({name, _id}) => setValue({
+  const onMouseDown = ({ name, _id }) => setValue({
     name: capitalizeFirst(name),
     id: _id
   })

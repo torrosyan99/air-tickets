@@ -1,12 +1,13 @@
-import PassengerCloseSvg from "@icons/passenger-close.svg?react";
-import PassengerOpenSvg from "@icons/passenger-open.svg?react";
-import {ticketActions} from "@/entities/ticket/model/ticketSlice.js";
-import CloseSvg from "@icons/close.svg?react";
-import {useDispatch, useSelector} from "react-redux";
-import {activeSeatsSelector} from "@/entities/ticket/model/selectors.jsx";
-import {Title} from "@/shared/ui/Title/Title.jsx";
+import CloseSvg from '@icons/close.svg?react';
+import PassengerCloseSvg from '@icons/passenger-close.svg?react';
+import PassengerOpenSvg from '@icons/passenger-open.svg?react';
+import { useDispatch, useSelector } from 'react-redux';
 
-export const PassengerFormTop = ({setIsOpen, isOpen, remove, index, filed, count}) => {
+import { activeSeatsSelector } from '@/entities/ticket/model/selectors.jsx';
+import { ticketActions } from '@/entities/ticket/model/ticketSlice.js';
+import { Title } from '@/shared/ui/Title/Title.jsx';
+
+export const PassengerFormTop = ({ setIsOpen, isOpen, remove, index, filed, count }) => {
   const dispatch = useDispatch();
   const departureActiveSeats = useSelector(activeSeatsSelector);
 

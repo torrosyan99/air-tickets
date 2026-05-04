@@ -1,8 +1,9 @@
-import {Button} from "@/shared/ui/Button/Button.jsx";
-import {PagePaths} from "@/shared/configs/routerConfig/routerConfig.jsx";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-export const ResultPayment = ({personalData}) => {
+import { PagePaths } from '@/shared/configs/routerConfig/routerConfig.jsx';
+import { Button } from '@/shared/ui/Button/Button.jsx';
+
+export const ResultPayment = ({ personalData }) => {
   const navigate = useNavigate()
   const handleClick = () => {
     navigate(PagePaths.PAYMENT);
@@ -15,9 +16,9 @@ export const ResultPayment = ({personalData}) => {
 
       <div className="result__payment">
         <div className="result__payment-type">
-          {personalData.payment_method === "online"
-            ? "Онлайн"
-            : "Наличные"}
+          {personalData.payment_method === 'online'
+            ? 'Онлайн'
+            : 'Наличные'}
         </div>
 
         <div className="result__right">

@@ -1,7 +1,7 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import {  QueryClientProvider } from '@tanstack/react-query';
 
+import { queryClient } from './queryClient.js';
 
-export const queryClient = new QueryClient();
 
 
 export const QueryProvider = ({ children }) => {

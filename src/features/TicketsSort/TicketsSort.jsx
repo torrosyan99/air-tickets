@@ -1,7 +1,8 @@
-import { useTickets } from '@/shared/hooks/useTickets/useTickets.jsx';
 
 import { TicketsLimit } from './TicketsLimit.jsx';
 import { TicketsSortSelect } from './TicketsSortSelect.jsx';
+
+import { useTickets } from '@/shared/hooks/useTickets/useTickets.jsx';
 
 
 import './TicketsSort.css'

@@ -1,8 +1,9 @@
 import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
 import { useState } from 'react';
 
+import 'rc-slider/assets/index.css';
 import './Range.css'
+
 
 const Handle = ({ props }) => {
   const { value, dragging, index, ...restProps } = props;

@@ -1,8 +1,9 @@
-import {ToggleContent} from "@/shared/ui/ToggleContent/ToggleContent.jsx";
-import RubSvg from "@icons/rub.svg?react";
-import {Title} from "@/shared/ui/Title/Title.jsx";
+import RubSvg from '@icons/rub.svg?react';
 
-export const DetailsPassengers = ({icon, priceInfo}) => {
+import { Title } from '@/shared/ui/Title/Title.jsx';
+import { ToggleContent } from '@/shared/ui/ToggleContent/ToggleContent.jsx';
+
+export const DetailsPassengers = ({ icon, priceInfo }) => {
   return (
     <div className='details__block details__passengers'>
       <ToggleContent icon={icon} title={<Title variant={'bold'} className='details__title'>Пассажиры</Title>}>

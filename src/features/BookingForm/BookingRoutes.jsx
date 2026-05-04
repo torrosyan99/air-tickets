@@ -1,7 +1,7 @@
-import { LocationInput } from '@/features/LocationInput/LocationInput.jsx';
-
 import ChangeSvg from '@icons/change.svg?react';
-import {Title} from "@/shared/ui/Title/Title.jsx";
+
+import { LocationInput } from '@/features/LocationInput/LocationInput.jsx';
+import { Title } from '@/shared/ui/Title/Title.jsx';
 
 
 export const BookingRoutes = ({ data, setData, errors, setErrors }) => {

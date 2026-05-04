@@ -1,14 +1,16 @@
-import {useTickets} from "@/shared/hooks/useTickets/useTickets.jsx";
-import {Ticket} from "@/features/Ticket/Ticket.jsx";
-import {useEffect, useRef, useState} from "react";
-import {LastTickets} from "@/widgets/LastTickets/LastTickets.jsx";
-import {Filter} from "@/features/Filter/Filter.jsx";
-import {Sidebar} from "@/widgets/Sidebar/Sidebar.jsx";
-import {Steps} from "@/widgets/Steps/Steps.jsx";
-import {BookingTop} from "@/widgets/BookingTop/BookingTop.jsx";
-import {Tickets} from "@/widgets/Tickets/Tickets.jsx";
-import {Loading} from "@/shared/ui/Loading/Loading.jsx";
-import {Container} from "@/shared/ui/Container/Container.jsx"
+import { useEffect, useRef, useState } from 'react';
+
+import { BookingTop } from '@/widgets/BookingTop/BookingTop.jsx';
+import { LastTickets } from '@/widgets/LastTickets/LastTickets.jsx';
+import { Sidebar } from '@/widgets/Sidebar/Sidebar.jsx';
+import { Steps } from '@/widgets/Steps/Steps.jsx';
+import { Tickets } from '@/widgets/Tickets/Tickets.jsx';
+
+import { Filter } from '@/features/Filter/Filter.jsx';
+import { Ticket } from '@/features/Ticket/Ticket.jsx';
+import { useTickets } from '@/shared/hooks/useTickets/useTickets.jsx';
+import { Container } from '@/shared/ui/Container/Container.jsx'
+import { Loading } from '@/shared/ui/Loading/Loading.jsx';
 
 
 export const TicketsPage = () => {

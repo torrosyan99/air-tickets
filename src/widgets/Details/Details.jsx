@@ -1,16 +1,16 @@
-import ArrowRight from '@icons/arrow-orange-right.svg?react';
 import ArrowLeft from '@icons/arrow-orange-left.svg?react';
-import ArrowGraphicRight from "@icons/ticket-arrow-right.svg?react";
-import ArrowGraphicLeft from "@icons/ticket-arrow-left.svg?react";
-import PassengersSvg from "@icons/passengers.svg?react";
-import WhiteRubSvg from "@icons/white-rub.svg?react";
+import ArrowRight from '@icons/arrow-orange-right.svg?react';
+import PassengersSvg from '@icons/passengers.svg?react';
+import ArrowGraphicLeft from '@icons/ticket-arrow-left.svg?react';
+import ArrowGraphicRight from '@icons/ticket-arrow-right.svg?react';
+import WhiteRubSvg from '@icons/white-rub.svg?react';
 
-import {useTripDetails} from "./hooks/useTripDetails";
-import {DetailsPassengers} from "./DetailsPassengers.jsx";
-import {DetailsRoute} from "./DetailsRoute";
+import { DetailsPassengers } from './DetailsPassengers.jsx';
+import { DetailsRoute } from './DetailsRoute';
+import { useTripDetails } from './hooks/useTripDetails';
 
 import './Details.css';
-import {Title} from "@/shared/ui/Title/Title.jsx";
+import { Title } from '@/shared/ui/Title/Title.jsx';
 
 export const Details = () => {
   const {

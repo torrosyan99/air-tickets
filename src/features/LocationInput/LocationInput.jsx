@@ -1,12 +1,13 @@
+import LocationSvg from '@icons/location-2.svg?react'
 import { useState } from 'react';
 
 
 import { useCitiesSearch } from './hooks/useCitiesSearch.jsx';
+import { LocationList } from './LocationList.jsx';
+
 import { Input } from '@/shared/ui/Input/Input.jsx';
 
-import LocationSvg from '@icons/location-2.svg?react'
 
-import { LocationList } from './LocationList.jsx';
 
 import './LocationInput.css'
 

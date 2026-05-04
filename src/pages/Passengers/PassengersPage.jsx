@@ -1,4 +1,4 @@
-import {Passengers} from "@/features/Passengers/Passengers.jsx";
+import { Passengers } from '@/features/Passengers/Passengers.jsx';
 
 export const PassengersPage = () => {
   return (

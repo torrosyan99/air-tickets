@@ -1,12 +1,13 @@
-import {createSlice} from "@reduxjs/toolkit";
-import {getSeats} from "../thunks/getSeats.js";
+import { createSlice } from '@reduxjs/toolkit';
+
+import { getSeats } from '../thunks/getSeats.js';
 
 
 const ticketSlice = createSlice({
-  name: "TICKET",
+  name: 'TICKET',
   initialState: {
     personalData: {},
-    routeId: "",
+    routeId: '',
     params: '',
     departure: {
       seats: [],
@@ -22,13 +23,13 @@ const ticketSlice = createSlice({
       const direction = action.payload.direction || 'departure';
 
       const wagon = state[direction].seats.find(
-        ({coach}) => coach.name == action.payload.name
+        ({ coach }) => coach.name == action.payload.name
       );
 
       if (!wagon) return;
 
       const seat = wagon.seats.find(
-        ({index}) => index == action.payload.index
+        ({ index }) => index == action.payload.index
       );
 
       if (!seat) return;
@@ -40,7 +41,7 @@ const ticketSlice = createSlice({
         state[direction].price -= price;
 
         state[direction].activeSeats = state[direction].activeSeats.filter(
-          ({coach_id, seat_number}) =>
+          ({ coach_id, seat_number }) =>
             !(coach_id === wagon.coach._id &&
               seat_number === action.payload.index)
         );
@@ -70,13 +71,13 @@ const ticketSlice = createSlice({
     },
 
     addSeat: (state, action) => {
-      const {placeInfo, direction} = action.payload;
+      const { placeInfo, direction } = action.payload;
 
       state.departure.seats = state.departure.seats.map((coach) => ({
         ...coach,
         seats: coach.seats.map((seat) =>
           seat.index === placeInfo.index
-            ? {...seat, isActive: true}
+            ? { ...seat, isActive: true }
             : seat
         ),
       }));
@@ -102,7 +103,7 @@ const ticketSlice = createSlice({
       });
     },
     deleteSeat: (state, action) => {
-      const {direction, seat_number, coach_id} = action.payload;
+      const { direction, seat_number, coach_id } = action.payload;
       const current = state[direction];
 
       const item = current.activeSeats.find(
@@ -141,11 +142,11 @@ const ticketSlice = createSlice({
     reset: (state, action) => {
       const direction = action.payload.direction || 'departure';
 
-      state[direction].activeSeats = [];
-
-      state[direction].activeSeats.forEach(({price}) => {
+      state[direction].activeSeats.forEach(({ price }) => {
         state[direction].price -= price
       })
+      state[direction].activeSeats = [];
+
       state[direction].seats.forEach((wagon) => {
         wagon.seats.forEach((seat) => {
           seat.isActive = false;
@@ -154,7 +155,7 @@ const ticketSlice = createSlice({
     },
     changeAge: (state, action) => {
       const item = state[action.payload.direction].activeSeats.find(
-        ({seat_number}) => seat_number === action.payload.seat_number
+        ({ seat_number }) => seat_number === action.payload.seat_number
       )
       if (action.payload.age === 'Взрослый') {
         item.is_child = false;
@@ -168,7 +169,7 @@ const ticketSlice = createSlice({
     updateActiveSeats: (state, action) => {
       action.payload.data.forEach((item) => {
         const seat = state[item.direction]?.activeSeats?.find(
-          ({coach_id, seat_number}) =>
+          ({ coach_id, seat_number }) =>
             item.coach_id === coach_id &&
             item.seat_number === seat_number
         );
@@ -185,7 +186,7 @@ const ticketSlice = createSlice({
         info.gender = item.gender;
 
         info.document_data =
-          item.document_type === "паспорт"
+          item.document_type === 'паспорт'
             ? `${item.document_series} ${item.document_number}`
             : item.document_data;
       });
@@ -205,7 +206,7 @@ const ticketSlice = createSlice({
     ,
     resetAll: (state) => {
       state.personalData = {};
-      state.routeId = "";
+      state.routeId = '';
       state.departure = {
         seats: [],
         price: 0,

@@ -1,11 +1,12 @@
 
-import { cn } from '@/shared/utils/cn/cn.js'
 
 import CoffeeSvg from '@icons/coffee.svg'
 import ConditionerSvg from '@icons/conditioner.svg?react'
 import ExpressSvg from '@icons/express.svg?react'
 import UnderwearSvg from '@icons/underwear.svg?react'
 import WiFiSvg from '@icons/wi-fi-2.svg?react'
+
+import { cn } from '@/shared/utils/cn/cn.js'
 
 import './TicketServices.css'
 

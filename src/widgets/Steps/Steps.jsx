@@ -1,18 +1,20 @@
 import './Steps.css';
-import { Container } from '@/shared/ui/Container/Container.jsx';
+import { useLocation } from 'react-router-dom';
+
 import { Step } from './Step.jsx';
-import { useLocation } from "react-router-dom";
-import {cn} from "@/shared/utils/cn/cn.js";
+
+import { Container } from '@/shared/ui/Container/Container.jsx';
+import { cn } from '@/shared/utils/cn/cn.js';
 
 export const Steps = () => {
   const { pathname } = useLocation();
 
 
   const stepIndex = (() => {
-    if (pathname.includes("tickets")) return 1;
-    if (pathname.includes("passengers")) return 2;
-    if (pathname.includes("payment")) return 3;
-    if (pathname.includes("result")) return 4;
+    if (pathname.includes('tickets')) return 1;
+    if (pathname.includes('passengers')) return 2;
+    if (pathname.includes('payment')) return 3;
+    if (pathname.includes('result')) return 4;
     return 1;
   })();
 

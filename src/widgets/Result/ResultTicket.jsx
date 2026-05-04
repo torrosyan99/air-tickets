@@ -1,12 +1,13 @@
-import {TicketCard} from "@/entities/ticket/TicketCard/TicketCard.jsx";
-import {Button} from "@/shared/ui/Button/Button.jsx";
-import {useSelector} from "react-redux";
-import {paramsSelector, ticketSelector} from "@/entities/ticket/model/selectors.jsx";
-import {useNavigate} from "react-router-dom";
-import {PagePaths} from "@/shared/configs/routerConfig/routerConfig.jsx";
-import {Title} from "@/shared/ui/Title/Title.jsx";
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-export const ResultTicket = ({ticket}) => {
+import { paramsSelector } from '@/entities/ticket/model/selectors.jsx';
+import { TicketCard } from '@/entities/ticket/TicketCard/TicketCard.jsx';
+import { PagePaths } from '@/shared/configs/routerConfig/routerConfig.jsx';
+import { Button } from '@/shared/ui/Button/Button.jsx';
+import { Title } from '@/shared/ui/Title/Title.jsx';
+
+export const ResultTicket = ({ ticket }) => {
  const params = useSelector(paramsSelector);
 const navigate = useNavigate()
 const handleClick = () => {

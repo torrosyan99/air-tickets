@@ -1,5 +1,5 @@
 import { Calendar } from '@/shared/ui/Calendar/Calendar.jsx';
-import {Title} from "@/shared/ui/Title/Title.jsx";
+import { Title } from '@/shared/ui/Title/Title.jsx';
 
 export const BookingDate = ({ data, setData }) => {
   const changeDate = (date, key) => setData({ ...data, [key]: date });

@@ -1,5 +1,6 @@
-import { Controller } from "react-hook-form";
-import { cn } from "@/shared/utils/cn/cn.js";
+import { Controller } from 'react-hook-form';
+
+import { cn } from '@/shared/utils/cn/cn.js';
 
 export const PassengerGender = ({ control, index }) => {
   return (
@@ -15,8 +16,8 @@ export const PassengerGender = ({ control, index }) => {
 
             <button
               type="button"
-              className={cn("passenger-form__gender-button", [], {
-                "passenger-form__gender-button--active": field.value === true,
+              className={cn('passenger-form__gender-button', [], {
+                'passenger-form__gender-button--active': field.value === true,
               })}
               onClick={() => field.onChange(true)}
             >
@@ -25,8 +26,8 @@ export const PassengerGender = ({ control, index }) => {
 
             <button
               type="button"
-              className={cn("passenger-form__gender-button", [], {
-                "passenger-form__gender-button--active": field.value === false,
+              className={cn('passenger-form__gender-button', [], {
+                'passenger-form__gender-button--active': field.value === false,
               })}
               onClick={() => field.onChange(false)}
             >

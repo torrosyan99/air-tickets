@@ -1,6 +1,7 @@
 import PolygonSvg from '@icons/polygon-3.svg?react'
-import {cn} from "@/shared/utils/cn/cn.js"
-export const TicketServicesButton = ({disabled, icon:Icon, children, active, onClick}) => {
+
+import { cn } from '@/shared/utils/cn/cn.js'
+export const TicketServicesButton = ({ disabled, icon:Icon, children, active, onClick }) => {
 
 
   return (

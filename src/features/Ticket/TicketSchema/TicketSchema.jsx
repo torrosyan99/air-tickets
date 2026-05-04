@@ -1,22 +1,23 @@
-import {FourthSchema} from "@/features/Schema/FourthSchema/FourthSchema.jsx";
-import {ThirdSchema} from "@/features/Schema/ThirdSchema/ThirdSchema.jsx";
-import {SecondSchema} from "@/features/Schema/SecondSchema/SecondSchema.jsx";
-import {FirstSchema} from "@/features/Schema/FirstSchema/FirstSchema.jsx";
-import {useDispatch, useSelector} from "react-redux";
-import {activeSeatsSelector} from "@/entities/ticket/model/selectors.jsx";
-import {ticketActions} from "@/entities/ticket/model/ticketSlice.js";
+import { useDispatch, useSelector } from 'react-redux';
 
-export const TicketSchema = ({wagon, type, passengers, arrival}) => {
+import { activeSeatsSelector } from '@/entities/ticket/model/selectors.jsx';
+import { ticketActions } from '@/entities/ticket/model/ticketSlice.js';
+import { FirstSchema } from '@/features/Schema/FirstSchema/FirstSchema.jsx';
+import { FourthSchema } from '@/features/Schema/FourthSchema/FourthSchema.jsx';
+import { SecondSchema } from '@/features/Schema/SecondSchema/SecondSchema.jsx';
+import { ThirdSchema } from '@/features/Schema/ThirdSchema/ThirdSchema.jsx';
+
+export const TicketSchema = ({ wagon, type, passengers, arrival }) => {
   const dispatch = useDispatch();
   const activeSeats = useSelector((state) => activeSeatsSelector(state, arrival && 'arrival'));
 
-  const {adults, children} = activeSeats.reduce(
+  const { adults, children } = activeSeats.reduce(
     (acc, seat) => {
       if (seat.person_info?.is_adult) acc.adults++;
       if (seat.is_child) acc.children++;
       return acc;
     },
-    {adults: 0, children: 0}
+    { adults: 0, children: 0 }
   );
 
 
@@ -34,7 +35,7 @@ export const TicketSchema = ({wagon, type, passengers, arrival}) => {
 
 
     dispatch(ticketActions.updateSeats(
-      {index: i, name: wagon.coach.name, type: t,  id: wagon.coach._id, price: p, direction: arrival && 'arrival'}))
+      { index: i, name: wagon.coach.name, type: t,  id: wagon.coach._id, price: p, direction: arrival && 'arrival' }))
   }
 
   return (

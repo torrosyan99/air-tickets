@@ -1,13 +1,17 @@
-import { useEffect, useRef, useState, useMemo } from "react";
-import firstSchema from "@/shared/assets/images/schema.svg";
-import "./FirstSchema.css";
-import { SchemaName } from "../SchemaName.jsx";
-import {cn} from "@/shared/utils/cn/cn.js";
+import { useEffect, useRef, useState, useMemo } from 'react';
+
+import { SchemaName } from '../SchemaName.jsx';
+
+import firstSchema from '@/shared/assets/images/schema.svg';
+import { cn } from '@/shared/utils/cn/cn.js';
+
+
+import './FirstSchema.css';
 
 export const FirstSchema = ({
                               wagon,
                               onSeatClick,
-                              selectionMode = "direct", // "dropdown" | "direct"
+                              selectionMode = 'direct',
                             }) => {
   const [activeSeat, setActiveSeat] = useState(null);
   const containerRef = useRef(null);
@@ -26,7 +30,7 @@ export const FirstSchema = ({
 
   const priceTooltip = useMemo(() => {
     const prices = [top_price, bottom_price, side_price].filter(
-      (p) => typeof p === "number" && p !== 0
+      (p) => typeof p === 'number' && p !== 0
     );
 
     const base = prices.length ? Math.min(...prices) : 0;
@@ -56,27 +60,24 @@ export const FirstSchema = ({
     if (!seat.available) return;
 
     if (seat.isActive) {
-      onSeatClick(seat.index, priceTooltip, "adult", true);
+      onSeatClick(seat.index, priceTooltip, 'adult', true);
       return;
     }
 
-    if (selectionMode === "direct") {
-      onSeatClick(seat.index, priceTooltip, "adult", false);
+    if (selectionMode === 'direct') {
+      onSeatClick(seat.index, priceTooltip, 'adult', false);
       return;
     }
 
-    setActiveSeat((prev) => (prev === seat.index ? null : seat.index));
+    setActiveSeat((prev) =>
+      prev === seat.index ? null : seat.index
+    );
   };
 
   const handleSelect = (type) => {
     if (!activeSeatData) return;
 
-    onSeatClick(
-      activeSeatData.index,
-      priceTooltip,
-      type,
-      false
-    );
+    onSeatClick(activeSeatData.index, priceTooltip, type, false);
 
     setActiveSeat(null);
   };
@@ -90,16 +91,12 @@ export const FirstSchema = ({
       }
     };
 
-    document.addEventListener("pointerdown", handlePointerDown, true);
-    return () =>
-      document.removeEventListener("pointerdown", handlePointerDown, true);
-  }, []);
+    document.addEventListener('pointerdown', handlePointerDown, true);
 
-  useEffect(() => {
-    if (activeSeatData?.isActive) {
-      setActiveSeat(null);
-    }
-  }, [activeSeatData]);
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown, true);
+    };
+  }, []);
 
   return (
     <div className="first-schema" ref={containerRef}>
@@ -111,23 +108,26 @@ export const FirstSchema = ({
         {currentSeats.map((seat) => (
           <li
             key={seat.index}
-            className={cn(`first-schema__seat first-schema__seat_${seat.index}`,
-              [], {
+            className={cn(
+              `first-schema__seat first-schema__seat_${seat.index}`,
+              [],
+              {
                 'first-schema__seat_available': seat.available,
                 'first-schema__seat_active': seat.isActive,
-              })}
+              }
+            )}
             onClick={(e) => handleSeatClick(seat, e)}
           >
             {seat.index}
 
-            {selectionMode === "dropdown" &&
+            {selectionMode === 'dropdown' &&
               activeSeatData?.index === seat.index &&
               activeSeatData?.available && (
                 <div className="seat-dropdown">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleSelect("adult");
+                      handleSelect('adult');
                     }}
                   >
                     Взрослый
@@ -136,7 +136,7 @@ export const FirstSchema = ({
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleSelect("child");
+                      handleSelect('child');
                     }}
                   >
                     Ребёнок

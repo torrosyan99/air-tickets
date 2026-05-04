@@ -1,7 +1,7 @@
-import { useState } from "react";
 import './Checkbox.css';
 import CheckSvg from '@icons/checked.svg?react'
-import {cn} from "@/shared/utils/cn/cn.js"
+
+import { cn } from '@/shared/utils/cn/cn.js'
 export const Checkbox = ({ label, checked, onClick }) => {
 
   return (
@@ -17,7 +17,7 @@ export const Checkbox = ({ label, checked, onClick }) => {
         {checked && <CheckSvg />}
       </span>
 
-      <span className={cn("checkbox__label", [], {
+      <span className={cn('checkbox__label', [], {
         'checkbox__label--checked': checked,
       })}>
         {label}

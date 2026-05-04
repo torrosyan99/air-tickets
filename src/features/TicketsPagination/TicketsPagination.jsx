@@ -1,9 +1,9 @@
+import PrevSvg from '@icons/pagination-left.svg?react'
+import NextSvg from '@icons/pagination-right.svg?react'
 import ReactPaginate from 'react-paginate';
 
 import { useTickets } from '@/shared/hooks/useTickets/useTickets.jsx';
 
-import PrevSvg from '@icons/pagination-left.svg?react'
-import NextSvg from '@icons/pagination-right.svg?react'
 
 
 import './TicketsPagination.css'

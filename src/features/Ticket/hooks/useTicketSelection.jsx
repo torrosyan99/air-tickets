@@ -1,15 +1,15 @@
-import { useEffect, useState, useMemo, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState, useMemo, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-import { useTickets } from "@/shared/hooks/useTickets/useTickets.jsx";
-import { getSeats } from "@/entities/ticket/thunks/getSeats.js";
 import {
   activeSeatsSelector,
   seatsSelector
-} from "@/entities/ticket/model/selectors.jsx";
-import { ticketActions } from "@/entities/ticket/model/ticketSlice.js";
-import { PagePaths } from "@/shared/configs/routerConfig/routerConfig.jsx";
+} from '@/entities/ticket/model/selectors.jsx';
+import { ticketActions } from '@/entities/ticket/model/ticketSlice.js';
+import { getSeats } from '@/entities/ticket/thunks/getSeats.js';
+import { PagePaths } from '@/shared/configs/routerConfig/routerConfig.jsx';
+import { useTickets } from '@/shared/hooks/useTickets/useTickets.jsx';
 
 const initialPassengers = {
   adult: 0,
@@ -57,9 +57,9 @@ export const useTicketSelection = (id) => {
   }, [activeTicket, id, dispatch, seats]);
 
 
-  const {params} = useTickets()
+  const { params } = useTickets()
   const handleClick = useCallback(() => {
-    dispatch(ticketActions.saveRouteParams({id, params}));
+    dispatch(ticketActions.saveRouteParams({ id, params }));
     navigate(PagePaths.PASSENGERS);
   }, [dispatch, navigate, id]);
 

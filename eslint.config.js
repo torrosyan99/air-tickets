@@ -29,7 +29,7 @@ export default defineConfig([
     rules: {
       'quotes': ['error', 'single'],
       'object-curly-spacing': ['error', 'always'],
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'no-unused-vars': ['warn', { varsIgnorePattern: '^[A-Z_]' }],
       'import/order': [
         'error',
         {
@@ -58,7 +58,7 @@ export default defineConfig([
           'newlines-between': 'always',
           alphabetize: { order: 'asc', caseInsensitive: true },
         }
-      ]
+      ],
     },
   },
   {

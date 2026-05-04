@@ -1,7 +1,8 @@
-import { formateHours } from '@/shared/utils/formateHours/formateHours.js';
 
 import TicketArrowRightSvg from '@icons/ticket-arrow-right.svg?react';
 import TicketArrowLeftSvg from '@icons/ticket-arrow-right.svg?react';
+
+import { formateHours } from '@/shared/utils/formateHours/formateHours.js';
 
 const TicketRow = ({ data, ArrowIcon, className }) => (
   <div className={className}>

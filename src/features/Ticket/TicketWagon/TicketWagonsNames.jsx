@@ -1,13 +1,14 @@
-import {cn} from "@/shared/utils/cn/cn.js";
-import {useMemo} from "react";
-import {useSelector} from "react-redux";
-import {seatsSelector} from "@/entities/ticket/model/selectors.jsx";
+import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 
-export const TicketWagonsNames = ({activeWagons,activeType, setActiveWagons}) => {
+import { seatsSelector } from '@/entities/ticket/model/selectors.jsx';
+import { cn } from '@/shared/utils/cn/cn.js';
+
+export const TicketWagonsNames = ({ activeWagons,activeType, setActiveWagons }) => {
   const seats = useSelector(seatsSelector);
 
   const wagonsByType = useMemo(() => {
-    return seats.reduce((acc, {coach}) => {
+    return seats.reduce((acc, { coach }) => {
       if (!acc[coach.class_type]) acc[coach.class_type] = [];
       acc[coach.class_type].push(coach);
       return acc;
@@ -26,7 +27,7 @@ export const TicketWagonsNames = ({activeWagons,activeType, setActiveWagons}) =>
     <div className="ticket__wagons">
       <span>Вагоны</span>
 
-      {wagonsByType[activeType]?.map(({name}) => (
+      {wagonsByType[activeType]?.map(({ name }) => (
         <button
           key={name}
           className={cn('ticket__wagons-button', [], {

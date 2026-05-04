@@ -1,14 +1,15 @@
 import './Passengers.css';
 
-import { PassengerFormItem } from "@/features/PassengerFormItem/PassengerFormItem.jsx";
-import { Button } from '@/shared/ui/Button/Button.jsx';
-import { AddPassenger } from "./AddPassenger.jsx";
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
-import { usePassengersForm } from "./hooks/usePassengersForm";
-import {useSelector} from "react-redux";
-import {activeSeatsSelector} from "@/entities/ticket/model/selectors.jsx";
-import {Navigate} from "react-router-dom";
-import {PagePaths} from "@/shared/configs/routerConfig/routerConfig.jsx";
+import { AddPassenger } from './AddPassenger.jsx';
+import { usePassengersForm } from './hooks/usePassengersForm';
+
+import { activeSeatsSelector } from '@/entities/ticket/model/selectors.jsx';
+import { PassengerFormItem } from '@/features/PassengerFormItem/PassengerFormItem.jsx';
+import { PagePaths } from '@/shared/configs/routerConfig/routerConfig.jsx';
+import { Button } from '@/shared/ui/Button/Button.jsx';
 
 export const Passengers = () => {
   const departureActiveSeats = useSelector(activeSeatsSelector) || [];

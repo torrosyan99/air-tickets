@@ -1,14 +1,14 @@
-import TrainSvg from "@icons/train-2.svg?react";
-import ArrowRightSvg from "@icons/arrow-right.svg?react";
-import TicketArrowRightSvg from "@icons/ticket-arrow-right.svg?react";
-import OclockSvg from "@icons/oclock.svg?react";
+import ArrowRightSvg from '@icons/arrow-right.svg?react';
+import OclockSvg from '@icons/oclock.svg?react';
+import TicketArrowRightSvg from '@icons/ticket-arrow-right.svg?react';
+import TrainSvg from '@icons/train-2.svg?react';
 
+
+import { Title } from '@/shared/ui/Title/Title.jsx';
 import {
   formateHours,
   formateHoursInText
-} from "@/shared/utils/formateHours/formateHours.js";
-
-import { Title } from "@/shared/ui/Title/Title.jsx";
+} from '@/shared/utils/formateHours/formateHours.js';
 
 export const TicketInfo = ({ activeTicket }) => {
   if (!activeTicket) return null;

@@ -1,4 +1,4 @@
-import { Input } from "@/shared/ui/Input/Input.jsx";
+import { Input } from '@/shared/ui/Input/Input.jsx';
 
 export const PassengerName = ({ errors, register, index }) => {
 

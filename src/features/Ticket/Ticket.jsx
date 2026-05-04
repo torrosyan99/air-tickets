@@ -1,14 +1,16 @@
 
-import {Button} from '@/shared/ui/Button/Button.jsx';
-import {TicketRoute} from "./TicketRoute.jsx";
-import {LoadingForSection} from "@/shared/ui/Loading/LoadingForSection.jsx";
-import {Title} from "@/shared/ui/Title/Title.jsx";
-import {useTicketSelection} from "./hooks/useTicketSelection.jsx";
+import { useTicketSelection } from './hooks/useTicketSelection.jsx';
+import { TicketRoute } from './TicketRoute.jsx';
+
+import { Button } from '@/shared/ui/Button/Button.jsx';
+import { LoadingForSection } from '@/shared/ui/Loading/LoadingForSection.jsx';
+import { Title } from '@/shared/ui/Title/Title.jsx';
+
 
 import './Ticket.css';
 
 
-export const Ticket = ({id}) => {
+export const Ticket = ({ id }) => {
   const {
     data,
     seats,

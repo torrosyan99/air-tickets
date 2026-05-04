@@ -1,6 +1,6 @@
 import { useTickets } from '@/shared/hooks/useTickets/useTickets.jsx';
 import { PriceRange } from '@/shared/ui/Range/PriceRange.jsx';
-import {Title} from "@/shared/ui/Title/Title.jsx";
+import { Title } from '@/shared/ui/Title/Title.jsx';
 
 const MAX_PRICE = 8000;
 const MIN_PRICE = 0;

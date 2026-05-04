@@ -1,9 +1,11 @@
-import { useTickets } from '@/shared/hooks/useTickets/useTickets.jsx'
-import { HoursRange } from '@/shared/ui/Range/HoursRange.jsx';
-import { ToggleContent } from '@/shared/ui/ToggleContent/ToggleContent.jsx';
 import ArrowOrangeLeft from '@icons/arrow-orange-left.svg?react';
 import ArrowOrangeRight from '@icons/arrow-orange-right.svg?react';
-import {Title} from "@/shared/ui/Title/Title.jsx";
+
+import { useTickets } from '@/shared/hooks/useTickets/useTickets.jsx'
+import { HoursRange } from '@/shared/ui/Range/HoursRange.jsx';
+import { Title } from '@/shared/ui/Title/Title.jsx';
+import { ToggleContent } from '@/shared/ui/ToggleContent/ToggleContent.jsx';
+
 
 const FIELDS = [
   {

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { API } from '@/shared/api/index.js';
-
 import { LastTicketsItem } from './LastTicketsItem.jsx';
-import {Title} from "@/shared/ui/Title/Title.jsx";
+
+import { API } from '@/shared/api/index.js';
+import { Title } from '@/shared/ui/Title/Title.jsx';
 
 import './LastTickets.css'
 

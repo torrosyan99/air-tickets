@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
+import { tickerReducer } from '@/entities/ticket/model/ticketSlice.js';
 import { baseApi } from '@/shared/api/index.js';
-import {tickerReducer} from "@/entities/ticket/model/ticketSlice.js";
 
 
 export default configureStore({

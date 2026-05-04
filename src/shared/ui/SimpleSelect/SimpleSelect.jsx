@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
-import { cn } from '@/shared/utils/cn/cn.js';
 import PolygonSvg from '@icons/polygon-4.svg?react'
+import { useState, useRef, useEffect } from 'react';
+
+import { cn } from '@/shared/utils/cn/cn.js';
 
 import './SimpleSelect.css'
 
@@ -30,7 +31,7 @@ export function SimpleSelect({
   }, []);
 
   const filteredOptions = options.filter(
-    (item) => item.toLowerCase() !== (value || "").toLowerCase()
+    (item) => item.toLowerCase() !== (value || '').toLowerCase()
   );
   return (
     <div className={cn('simple-select', [className], {

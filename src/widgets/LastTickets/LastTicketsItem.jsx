@@ -1,7 +1,7 @@
-import { TicketServices } from '@/entities/ticket/TicketServices/TicketServices.jsx';
-
 import RubSvg from '@icons/rub.svg?react';
-import {formatPrice} from "@/shared/utils/formatePrice/formatePrice.js";
+
+import { TicketServices } from '@/entities/ticket/TicketServices/TicketServices.jsx';
+import { formatPrice } from '@/shared/utils/formatePrice/formatePrice.js';
 
 
 export const LastTicketsItem = ({ departure }) => {

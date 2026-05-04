@@ -1,11 +1,14 @@
-import ConditionerSvg from '@icons/wagon-conditioner.svg?react'
-import WiFiSvg from '@icons/wagon-wi-fi.svg?react'
-import UnderwearSvg from '@icons/wagon-underwear.svg?react'
 import CoffeeSvg from '@icons/wagon-coffee.svg?react'
-import {TicketServicesButton} from "./TicketServicesButton.jsx";
-import {ticketActions} from "@/entities/ticket/model/ticketSlice.js";
-import {useDispatch, useSelector} from "react-redux";
-import {servicesSelector} from "@/entities/ticket/model/selectors.jsx";
+import ConditionerSvg from '@icons/wagon-conditioner.svg?react'
+import UnderwearSvg from '@icons/wagon-underwear.svg?react'
+import WiFiSvg from '@icons/wagon-wi-fi.svg?react'
+import { useDispatch, useSelector } from 'react-redux';
+
+import { TicketServicesButton } from './TicketServicesButton.jsx';
+
+import { servicesSelector } from '@/entities/ticket/model/selectors.jsx';
+import { ticketActions } from '@/entities/ticket/model/ticketSlice.js';
+
 export const TicketServices = ({ wagon, arrival }) => {
   const services = useSelector((state) => servicesSelector(state, arrival && 'arrival'));
   const dispatch = useDispatch();
@@ -41,13 +44,13 @@ export const TicketServices = ({ wagon, arrival }) => {
         disabled={!wagon.coach.have_air_conditioning}
         onClick={() =>
           toggleService(
-            "conditioner",
+            'conditioner',
             50,
             wagon.coach.have_air_conditioning
           )
         }
       >
-        кондиционер {wagon.coach.have_air_conditioning && "(50)"}
+        кондиционер {wagon.coach.have_air_conditioning && '(50)'}
       </TicketServicesButton>
 
       <TicketServicesButton
@@ -56,7 +59,7 @@ export const TicketServices = ({ wagon, arrival }) => {
         disabled={!wagon.coach.have_wifi}
         onClick={() =>
           toggleService(
-            "wi_fi",
+            'wi_fi',
             wagon.coach.wifi_price,
             wagon.coach.have_wifi
           )
@@ -71,7 +74,7 @@ export const TicketServices = ({ wagon, arrival }) => {
         disabled={wagon.coach.is_linens_included}
         onClick={() =>
           toggleService(
-            "linens",
+            'linens',
             100,
             !wagon.coach.is_linens_included
           )
@@ -79,8 +82,8 @@ export const TicketServices = ({ wagon, arrival }) => {
       >
         белье
         {wagon.coach.is_linens_included
-          ? " (включено)"
-          : " (100)"}
+          ? ' (включено)'
+          : ' (100)'}
       </TicketServicesButton>
 
       <TicketServicesButton icon={CoffeeSvg} disabled>

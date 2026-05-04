@@ -1,6 +1,8 @@
 import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { ReviewsItem } from './ReviewsItem.jsx';
+
 import firstImg from '@/shared/assets/images/reviews-img-1.png';
 import secondImg from '@/shared/assets/images/reviews-img-2.png';
 import { Container } from '@/shared/ui/Container/Container.jsx'
@@ -8,7 +10,6 @@ import { Title } from '@/shared/ui/Title/Title.jsx';
 
 import './Reviews.css'
 
-import { ReviewsItem } from './ReviewsItem.jsx';
 
 export const Reviews = () => {
   return (

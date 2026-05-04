@@ -1,9 +1,11 @@
-import {Button} from "@/shared/ui/Button/Button.jsx";
-import ErrorSvg from "@icons/error-icon.svg?react";
-import SuccessSvg from "@icons/success-icon.svg?react";
-import {usePassengerFormItem} from "./hooks/usePassengerFormItem.jsx";
+import ErrorSvg from '@icons/error-icon.svg?react';
+import SuccessSvg from '@icons/success-icon.svg?react';
 
-export const PassengerFormBottom = ({control, index, filed, errors, trigger}) => {
+import { usePassengerFormItem } from './hooks/usePassengerFormItem.jsx';
+
+import { Button } from '@/shared/ui/Button/Button.jsx';
+
+export const PassengerFormBottom = ({ control, index, filed, errors, trigger }) => {
   const {
     show,
     handleValidate,

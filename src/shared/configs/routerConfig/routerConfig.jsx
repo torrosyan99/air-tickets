@@ -1,9 +1,9 @@
 import { HomePage } from '@/pages/HomePage/HomePage.jsx';
+import { PassengersPage } from '@/pages/Passengers/PassengersPage.jsx';
+import { PaymentPage } from '@/pages/PaymentPage/PaymentPage.jsx';
+import { ResultPage } from '@/pages/ResultPage/ResultPage.jsx';
+import { SuccessPage } from '@/pages/SuccessPage/SuccessPage.jsx';
 import { TicketsPage } from '@/pages/TicketsPage/TicketsPage.jsx';
-import {PassengersPage} from "@/pages/Passengers/PassengersPage.jsx";
-import {PaymentPage} from "@/pages/PaymentPage/PaymentPage.jsx";
-import {ResultPage} from "@/pages/ResultPage/ResultPage.jsx";
-import {SuccessPage} from "@/pages/SuccessPage/SuccessPage.jsx";
 
 export const PagePaths = {
   HOMEPAGE: '/',

@@ -1,12 +1,13 @@
-import {Title} from "@/shared/ui/Title/Title.jsx";
-import {ResultPassengersList} from "@/widgets/Result/ResultPassengers/ResultPassengersList.jsx";
-import RubSvg from "@icons/rub.svg?react";
-import {Button} from "@/shared/ui/Button/Button.jsx";
-import {useSelector} from "react-redux";
-import {activeSeatsSelector, priceSelector} from "@/entities/ticket/model/selectors.jsx";
-import {useMemo} from "react";
-import {useNavigate} from "react-router-dom";
-import {PagePaths} from "@/shared/configs/routerConfig/routerConfig.jsx";
+import RubSvg from '@icons/rub.svg?react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import { ResultPassengersList } from '@/widgets/Result/ResultPassengers/ResultPassengersList.jsx';
+
+import { activeSeatsSelector, priceSelector } from '@/entities/ticket/model/selectors.jsx';
+import { PagePaths } from '@/shared/configs/routerConfig/routerConfig.jsx';
+import { Button } from '@/shared/ui/Button/Button.jsx';
+import { Title } from '@/shared/ui/Title/Title.jsx';
 
 export const ResultPassengers = () => {
   const price = useSelector(priceSelector) || 0;
@@ -16,18 +17,15 @@ export const ResultPassengers = () => {
     navigate(PagePaths.PASSENGERS);
   }
   const arrivalPrice = useSelector(
-    (state) => priceSelector(state, "arrival")
+    (state) => priceSelector(state, 'arrival')
   ) || 0;
 
   const departureSeats = useSelector(activeSeatsSelector) || [];
   const arrivalSeats = useSelector(
-    (state) => activeSeatsSelector(state, "arrival")
+    (state) => activeSeatsSelector(state, 'arrival')
   ) || [];
 
-  const allSeats = useMemo(
-    () => [...departureSeats, ...arrivalSeats],
-    [departureSeats, arrivalSeats]
-  );
+  const allSeats = [...departureSeats, ...arrivalSeats];
 
   const totalPrice = price + arrivalPrice;
   return (

@@ -1,6 +1,8 @@
 import RubSvg from '@icons/rub.svg?react';
-import { TicketServices } from "./TicketServices.jsx";
-import {formatPrice} from "@/shared/utils/formatePrice/formatePrice.js";
+
+import { TicketServices } from './TicketServices.jsx';
+
+import { formatPrice } from '@/shared/utils/formatePrice/formatePrice.js';
 
 export const TicketWagonInfo = ({ wagon, arrival }) => {
   const coach = wagon?.coach;
@@ -16,9 +18,9 @@ export const TicketWagonInfo = ({ wagon, arrival }) => {
   } = coach;
 
   const seatTypes = [
-    { key: "top", label: "Верхние", price: top_price },
-    { key: "bottom", label: "Нижние", price: bottom_price },
-    { key: "side", label: "Боковые", price: side_price },
+    { key: 'top', label: 'Верхние', price: top_price },
+    { key: 'bottom', label: 'Нижние', price: bottom_price },
+    { key: 'side', label: 'Боковые', price: side_price },
   ];
 
 
