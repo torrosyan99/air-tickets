@@ -62,7 +62,7 @@ export const TicketRoute = ({
         </Button>
       </div>
 
-      <TicketInfo activeTicket={activeTicket}/>
+      <TicketInfo activeTicket={activeTicket} arrival={arrival} />
 
       <TicketCounts
         passengers={passengers}

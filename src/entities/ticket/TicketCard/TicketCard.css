@@ -47,6 +47,7 @@
 
 .ticket-card__graphic-hours {
     font-size: 24px;
+    color: var(--black-color);
     font-weight: 700;
 }
 

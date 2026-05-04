@@ -1,8 +1,8 @@
 import ArrowRightSvg from '@icons/arrow-right.svg?react';
 import OclockSvg from '@icons/oclock.svg?react';
 import TicketArrowRightSvg from '@icons/ticket-arrow-right.svg?react';
+import TicketArrowLeftSvg from '@icons/ticket-arrow-left.svg?react';
 import TrainSvg from '@icons/train-2.svg?react';
-
 
 import { Title } from '@/shared/ui/Title/Title.jsx';
 import {
@@ -10,17 +10,15 @@ import {
   formateHoursInText
 } from '@/shared/utils/formateHours/formateHours.js';
 
-export const TicketInfo = ({ activeTicket }) => {
+export const TicketInfo = ({ activeTicket, arrival }) => {
   if (!activeTicket) return null;
 
-  const {
-    train,
-    from,
-    to,
-    duration
-  } = activeTicket;
+  const { train, from, to, duration } = activeTicket;
 
   const [hours, minutes] = formateHoursInText(duration);
+
+  const firstPoint = arrival ? to : from;
+  const secondPoint = arrival ? from : to;
 
   return (
     <div className="ticket__info">
@@ -44,26 +42,26 @@ export const TicketInfo = ({ activeTicket }) => {
       <div className="ticket__info-item">
         <div className="ticket__graphic">
           <div className="ticket__graphic-item">
-            <Title h={5} variant="medium" className="ticket__graphic-hours">
-              {formateHours(from?.datetime)}
+            <Title h={4} variant="bold" className="ticket__graphic-hours">
+              {formateHours(firstPoint?.datetime)}
             </Title>
 
             <p className="ticket__graphic-place">
-              {from?.city?.name} <br />
-              <span>{from?.railway_station_name} вокзал</span>
+              {firstPoint?.city?.name} <br />
+              <span>{firstPoint?.railway_station_name} вокзал</span>
             </p>
           </div>
 
-          <TicketArrowRightSvg />
+          {arrival ? <TicketArrowLeftSvg /> : <TicketArrowRightSvg />}
 
           <div className="ticket__graphic-item">
-            <Title h={5} variant="medium" className="ticket__graphic-hours">
-              {formateHours(to?.datetime)}
+            <Title h={4} variant="bold" className="ticket__graphic-hours">
+              {formateHours(secondPoint?.datetime)}
             </Title>
 
             <p className="ticket__graphic-place">
-              {to?.city?.name} <br />
-              <span>{to?.railway_station_name} вокзал</span>
+              {secondPoint?.city?.name} <br />
+              <span>{secondPoint?.railway_station_name} вокзал</span>
             </p>
           </div>
         </div>
