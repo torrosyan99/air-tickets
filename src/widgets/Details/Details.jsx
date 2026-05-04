@@ -44,7 +44,7 @@ export const Details = () => {
       />
 
       <div className='details__bottom'>
-        <span>Итог</span>
+        <Title variant={'bold'}>Итог</Title>
         <div className='details__all-price'>
           {totalPrice}
           <WhiteRubSvg/>

@@ -22,7 +22,6 @@ const dispatch = useDispatch();
     }
   }, []);
 
-  // 👉 loading
   if (!data) {
     return (
       <section className="tickets">
@@ -31,7 +30,7 @@ const dispatch = useDispatch();
     );
   }
 
-  if (data.total_count === 0) {
+  if (data.total_count === 0 ) {
     return (
       <section className="tickets" id="tickets">
         <Title>Ничего не найдено</Title>
@@ -43,7 +42,7 @@ const dispatch = useDispatch();
     <section className="tickets" id="tickets">
       <TicketsSort />
       <div className="tickets__list">
-        {data.items.map(item => (
+        {(data?.items || []).map(item => (
           <TicketCard key={item.departure._id} {...item} />
         ))}
       </div>

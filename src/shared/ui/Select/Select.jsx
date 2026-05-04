@@ -14,7 +14,6 @@ export function Select({
   const [open, setOpen] = useState(false);
   const ref = useRef();
 
-  // закрытие при клике вне
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (!ref.current?.contains(e.target)) {
@@ -52,7 +51,7 @@ export function Select({
               className={'select__item-button'}
               key={item}
               onClick={() => {
-                onChange(item); // 👈 твоя функция
+                onChange(item);
                 setOpen(false);
               }}
             >

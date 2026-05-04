@@ -1,4 +1,5 @@
 import { Calendar } from '@/shared/ui/Calendar/Calendar.jsx';
+import {Title} from "@/shared/ui/Title/Title.jsx";
 
 export const BookingDate = ({ data, setData }) => {
   const changeDate = (date, key) => setData({ ...data, [key]: date });
@@ -6,7 +7,7 @@ export const BookingDate = ({ data, setData }) => {
 
   return (
     <div className={'booking__date'}>
-      <h3 className={'booking__title'}>Дата</h3>
+      <Title className={'booking__title'} variant={'light'}>Дата</Title>
       <div className={'booking__wrapper'}>
         <Calendar
           date={data.startDate}

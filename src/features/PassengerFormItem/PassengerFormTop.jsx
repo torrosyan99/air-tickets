@@ -4,6 +4,7 @@ import {ticketActions} from "@/entities/ticket/model/ticketSlice.js";
 import CloseSvg from "@icons/close.svg?react";
 import {useDispatch, useSelector} from "react-redux";
 import {activeSeatsSelector} from "@/entities/ticket/model/selectors.jsx";
+import {Title} from "@/shared/ui/Title/Title.jsx";
 
 export const PassengerFormTop = ({setIsOpen, isOpen, remove, index, filed, count}) => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ export const PassengerFormTop = ({setIsOpen, isOpen, remove, index, filed, count
       <button className={'passenger-form__top-button'} type={'button'} onClick={handleClick}>
         {isOpen ? <PassengerCloseSvg/> : <PassengerOpenSvg/>}
       </button>
-      <span> Пассажир {count}</span>
+      <Title> Пассажир {count}</Title>
       {departureActiveSeats.length > 1  &&
         <button className={'passenger-form__delete'} type={'button'} onClick={handleDelete}>
         <CloseSvg/>

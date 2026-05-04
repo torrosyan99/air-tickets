@@ -84,6 +84,7 @@
     font-size: 24px;
 }
 
-.success-info__button:hover {
+.success-info__button.success-info__button:hover {
     color: var(--secondary-color);
+    border: 1px solid var(--whtie-border-color);
 }

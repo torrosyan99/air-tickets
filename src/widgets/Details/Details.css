@@ -103,12 +103,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 30px;
-    font-weight: 700;
 }
 
 .details__all-price {
     display: flex;
+    font-weight: 700;
     font-size: 48px;
     color: var(--orange-color);
     gap: 7px;

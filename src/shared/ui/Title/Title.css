@@ -2,6 +2,10 @@
     font-weight: 400;
 }
 
+.title--light {
+font-weight: 300;
+}
+
 .title--medium {
     font-weight: 500;
 }

@@ -50,25 +50,21 @@ export const FourthSchema = ({
     return currentSeats.find((s) => s.index === activeSeat);
   }, [currentSeats, activeSeat]);
 
-  // 🚀 клик по месту
   const handleSeatClick = (seat, e) => {
     e.stopPropagation();
 
     if (!seat.available) return;
 
-    // если уже активный → УДАЛЕНИЕ
     if (seat.isActive) {
       onSeatClick(seat.index, priceTooltip, "adult", true);
       return;
     }
 
-    // direct режим → ДОБАВЛЕНИЕ
     if (selectionMode === "direct") {
       onSeatClick(seat.index, priceTooltip, "adult", false);
       return;
     }
 
-    // dropdown режим
     setActiveSeat((prev) => (prev === seat.index ? null : seat.index));
   };
 
@@ -89,7 +85,6 @@ export const FourthSchema = ({
     };
   }, []);
 
-  // защита от внешних изменений seats
   useEffect(() => {
     if (activeSeatData?.isActive) {
       setActiveSeat(null);

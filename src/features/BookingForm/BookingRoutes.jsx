@@ -1,6 +1,7 @@
 import { LocationInput } from '@/features/LocationInput/LocationInput.jsx';
 
 import ChangeSvg from '@icons/change.svg?react';
+import {Title} from "@/shared/ui/Title/Title.jsx";
 
 
 export const BookingRoutes = ({ data, setData, errors, setErrors }) => {
@@ -19,7 +20,7 @@ export const BookingRoutes = ({ data, setData, errors, setErrors }) => {
 
   return (
     <div className={'booking__routes'}>
-      <h3 className={'booking__title'}>Направление</h3>
+      <Title className={'booking__title'} variant={'light'}>Направление</Title>
       <div className={'booking__wrapper'}>
         <LocationInput
           placeholder={'Откуда'}

@@ -286,7 +286,7 @@ var drawChart = (function (exports) {
   function node_links() {
     var root = this, links = [];
     root.each(function(node) {
-      if (node !== root) { // Don’t include the root’s parent, if any.
+      if (node !== root) {
         links.push({source: node.parent, target: node});
       }
     });

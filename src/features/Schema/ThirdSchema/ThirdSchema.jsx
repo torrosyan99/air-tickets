@@ -95,7 +95,6 @@ export const ThirdSchema = ({
       document.removeEventListener("pointerdown", handlePointerDown, true);
   }, []);
 
-  // защита от внешнего изменения активного места
   useEffect(() => {
     if (activeSeatData?.isActive) {
       setActiveSeat(null);

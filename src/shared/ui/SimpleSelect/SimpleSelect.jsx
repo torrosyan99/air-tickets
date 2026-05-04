@@ -18,7 +18,6 @@ export function SimpleSelect({
   const [open, setOpen] = useState(false);
   const ref = useRef();
 
-  // закрытие при клике вне
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (!ref.current?.contains(e.target)) {

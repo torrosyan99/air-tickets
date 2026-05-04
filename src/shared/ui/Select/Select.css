@@ -11,6 +11,12 @@
     text-align: start;
 }
 
+.select__item-button:hover  {
+    background-color: #FFCA62 ;
+    border-bottom: 1px solid #FFCA62 ;
+
+    color: var(--secondary-color);
+}
 .select__list {
     position: absolute;
     top: 100%;

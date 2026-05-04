@@ -50,29 +50,24 @@ export const FirstSchema = ({
     return currentSeats.find((s) => s.index === activeSeat);
   }, [currentSeats, activeSeat]);
 
-  // 🚀 клик по месту
   const handleSeatClick = (seat, e) => {
     e.stopPropagation();
 
     if (!seat.available) return;
 
-    // удаление если уже выбран
     if (seat.isActive) {
       onSeatClick(seat.index, priceTooltip, "adult", true);
       return;
     }
 
-    // direct режим → сразу добавляем
     if (selectionMode === "direct") {
       onSeatClick(seat.index, priceTooltip, "adult", false);
       return;
     }
 
-    // dropdown режим
     setActiveSeat((prev) => (prev === seat.index ? null : seat.index));
   };
 
-  // выбор пассажира
   const handleSelect = (type) => {
     if (!activeSeatData) return;
 
@@ -86,7 +81,6 @@ export const FirstSchema = ({
     setActiveSeat(null);
   };
 
-  // закрытие по клику вне
   useEffect(() => {
     const handlePointerDown = (e) => {
       if (!containerRef.current) return;
@@ -101,7 +95,6 @@ export const FirstSchema = ({
       document.removeEventListener("pointerdown", handlePointerDown, true);
   }, []);
 
-  // защита от внешнего изменения активного состояния
   useEffect(() => {
     if (activeSeatData?.isActive) {
       setActiveSeat(null);
